@@ -1,0 +1,53 @@
+.wrap {
+  width: min(72vw, 280px);
+  cursor: pointer;
+  transform-origin: 50% 45%;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.55s ease;
+}
+
+.fill {
+  fill: #f5f5f5;
+  transition: fill 0.45s ease;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.wrap:hover,
+.wrap:focus-visible {
+  transform: scale(1.055) translateY(-6px) rotate(-0.8deg);
+  filter: drop-shadow(0 18px 42px rgba(255, 255, 255, 0.38))
+    drop-shadow(0 6px 14px rgba(0, 60, 120, 0.35));
+}
+
+.wrap:hover .fill,
+.wrap:focus-visible .fill {
+  fill: #ffffff;
+}
+
+.wrap:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wrap {
+    transition: none;
+  }
+
+  .fill {
+    transition: none;
+  }
+
+  .wrap:hover,
+  .wrap:focus-visible {
+    transform: none;
+    filter: drop-shadow(0 10px 24px rgba(255, 255, 255, 0.28));
+  }
+}

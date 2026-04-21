@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "vite build --base /ianua-website/ && gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.0.0",

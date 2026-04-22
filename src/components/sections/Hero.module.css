@@ -28,6 +28,18 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    /* Prima schermata = intero viewport su mobile (dvh/svh gestiscono UI browser) */
+    min-height: 100svh;
+    min-height: 100dvh;
+    height: 100svh;
+    height: 100dvh;
+    padding-left: clamp(1.25rem, 5vw, 3rem);
+    padding-right: clamp(1.25rem, 5vw, 3rem);
+    padding-top: max(env(safe-area-inset-top, 0px), clamp(2rem, 8vh, 4rem));
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(2rem, 8vh, 4rem));
+  }
+
   .logoImg {
     width: min(58vw, 260px);
   }

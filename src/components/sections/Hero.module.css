@@ -27,6 +27,12 @@
   user-select: none;
 }
 
+@media (max-width: 768px) {
+  .logoImg {
+    width: min(58vw, 260px);
+  }
+}
+
 @keyframes logoFadeIn {
   from {
     opacity: 0;

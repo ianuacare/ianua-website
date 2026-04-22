@@ -30,8 +30,6 @@
   flex-direction: column;
   gap: 0.7rem;
   padding-block: 0.5rem;
-  border-top: 1px solid rgba(10, 24, 48, 0.18);
-  padding-top: 1rem;
 }
 
 .value {

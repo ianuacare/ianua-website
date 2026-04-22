@@ -16,9 +16,9 @@
 
 :root {
   /* Palette editoriale */
-  --paper: #f6f3ee;
-  --paper-deep: #ece7df;
-  --paper-soft: #fbf9f5;
+  --paper: #ffffff;
+  --paper-deep: #f0f1f4;
+  --paper-soft: #fafafa;
   --ink: #0a1830;
   --ink-soft: #1a2748;
   --ink-mute: #4b5775;

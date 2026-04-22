@@ -5,14 +5,14 @@
   right: 0;
   /* Sopra il backdrop del menu mobile (z-index inferiore) */
   z-index: 60;
-  background: rgba(246, 243, 238, var(--header-bg-opacity, 0));
+  background: rgba(255, 255, 255, var(--header-bg-opacity, 0));
   border-bottom: 1px solid rgba(10, 24, 48, calc(var(--header-border-opacity, 0) * 0.1));
   transition: border-color 0.3s ease;
   will-change: backdrop-filter, background-color;
 }
 
 .scrolled {
-  background: rgba(246, 243, 238, 0.82);
+  background: rgba(255, 255, 255, 0.82);
 }
 
 .menuOpen {

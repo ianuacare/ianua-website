@@ -1,0 +1,309 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Sopra il backdrop del menu mobile (z-index inferiore) */
+  z-index: 60;
+  background: rgba(246, 243, 238, var(--header-bg-opacity, 0));
+  border-bottom: 1px solid rgba(10, 24, 48, calc(var(--header-border-opacity, 0) * 0.1));
+  transition: border-color 0.3s ease;
+  will-change: backdrop-filter, background-color;
+}
+
+.scrolled {
+  background: rgba(246, 243, 238, 0.82);
+}
+
+.menuOpen {
+  /* Drawer e toggle devono stare sopra il backdrop semitrasparente */
+  z-index: 100;
+}
+
+.inner {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(0.85rem, 2vw, 1.15rem) clamp(1.1rem, 3.5vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.logo {
+  display: block;
+  width: clamp(84px, 13vw, 118px);
+  height: auto;
+  object-fit: contain;
+}
+
+/* —— Nav desktop —— */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+
+.navLink {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.4rem 0;
+  transition: color 0.25s ease;
+}
+
+.navLinkText {
+  position: relative;
+  display: inline-block;
+}
+
+.navLinkText::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  color: var(--ink);
+  outline: none;
+}
+
+.navLink:hover .navLinkText::after,
+.navLink:focus-visible .navLinkText::after {
+  transform: scaleX(1);
+}
+
+.navCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
+  transition:
+    background 0.3s var(--ease-out),
+    color 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+
+.navCta::before {
+  content: "→";
+  display: inline-block;
+  font-size: 0.95rem;
+  transform: translateX(0);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.navCta:hover,
+.navCta:focus-visible {
+  background: var(--paper);
+  color: var(--ink);
+  outline: none;
+}
+
+.navCta:hover::before,
+.navCta:focus-visible::before {
+  transform: translateX(4px);
+}
+
+.navCta:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* —— Toggle mobile —— */
+
+.toggle {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  color: var(--ink);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+  background: rgba(10, 24, 48, 0.06);
+  border-color: var(--ink);
+  outline: none;
+}
+
+.toggleBar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  transform-origin: center;
+  transition: transform 0.4s var(--ease-out), top 0.3s ease, opacity 0.2s ease;
+}
+
+.toggleBar:nth-child(2) {
+  margin-left: -9px;
+  margin-top: -5px;
+}
+
+.toggleBar:nth-child(3) {
+  margin-left: -9px;
+  margin-top: 3px;
+}
+
+.toggleOpen .toggleBar:nth-child(2) {
+  margin-top: 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: 50%;
+  top: 50%;
+}
+
+.toggleOpen .toggleBar:nth-child(3) {
+  margin-top: 0;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  left: 50%;
+  top: 50%;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.backdrop {
+  display: none;
+}
+
+@media (max-width: 879px) {
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(86vw, 380px);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: clamp(2rem, 6vw, 3rem) clamp(1.5rem, 5vw, 2.5rem);
+    background: var(--paper);
+    border-left: 1px solid var(--line);
+    box-shadow: -32px 0 80px rgba(10, 24, 48, 0.18);
+    transform: translateX(102%);
+    transition: transform 0.55s var(--ease-out);
+    z-index: 2;
+  }
+
+  .nav.navOpen {
+    transform: translateX(0);
+  }
+
+  .nav .navLink {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--ink);
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .nav .navLink:last-of-type {
+    border-bottom: none;
+  }
+
+  .nav .navLinkText::after {
+    bottom: 0;
+  }
+
+  .nav .navCta {
+    margin-top: 1.5rem;
+    align-self: flex-start;
+    font-size: 0.85rem;
+    padding: 0.85rem 1.5rem;
+  }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    /* Sotto .header così logo, toggle e drawer restano leggibili e interattivi */
+    z-index: 40;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background: rgba(10, 24, 48, 0.32);
+    backdrop-filter: blur(4px);
+    animation: bdFade 0.4s ease forwards;
+  }
+}
+
+@keyframes bdFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .navLinkText::after,
+  .navCta,
+  .toggleBar,
+  .backdrop {
+    transition: none !important;
+    animation: none !important;
+  }
+}

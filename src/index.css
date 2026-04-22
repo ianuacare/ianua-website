@@ -1,17 +1,40 @@
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("./assets/fonts/HelveticaNeueLight.otf") format("opentype");
-  font-weight: 300;
+  src: url("./assets/fonts/HelveticaNeueRoman.otf") format("opentype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("./assets/fonts/HelveticaNeueRoman.otf") format("opentype");
-  font-weight: 400;
+  src: url("./assets/fonts/HelveticaNeueMedium.otf") format("opentype");
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
+}
+
+:root {
+  /* Palette editoriale */
+  --paper: #f6f3ee;
+  --paper-deep: #ece7df;
+  --paper-soft: #fbf9f5;
+  --ink: #0a1830;
+  --ink-soft: #1a2748;
+  --ink-mute: #4b5775;
+  --ink-faint: #7a849b;
+  --line: rgba(10, 24, 48, 0.12);
+  --line-soft: rgba(10, 24, 48, 0.06);
+  --accent: #1e5080;
+  --accent-warm: #b08a4a;
+
+  /* Tipografia */
+  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Easing condivise */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 *,
@@ -22,19 +45,32 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
   margin: 0;
   min-height: 100dvh;
-  background: #0a1830;
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 #root {
   min-height: 100dvh;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
 }

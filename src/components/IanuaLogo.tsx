@@ -1,11 +1,33 @@
 import styles from "./IanuaLogo.module.css";
 
+type IanuaLogoProps = {
+  className?: string;
+  /**
+   * "ink" usa color: var(--ink) (su fondo chiaro), "paper" usa color: var(--paper) (su fondo scuro).
+   * "currentColor" eredita dal contenitore.
+   */
+  tone?: "ink" | "paper" | "currentColor";
+  interactive?: boolean;
+};
+
 /**
- * Logo vettoriale Ianua bianco (ianua_bianco.svg). Animazione hover via CSS.
+ * Logo wordmark Ianua. Il fill segue currentColor così la theming
+ * avviene dal contenitore tramite la prop `tone`.
  */
-export function IanuaLogo() {
+export function IanuaLogo({ className, tone = "currentColor", interactive = true }: IanuaLogoProps) {
+  const toneClass =
+    tone === "ink" ? styles.toneInk : tone === "paper" ? styles.tonePaper : "";
+  const wrapClass = [
+    styles.wrap,
+    interactive ? styles.interactive : "",
+    toneClass,
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div className={styles.wrap} tabIndex={0}>
+    <div className={wrapClass} tabIndex={interactive ? 0 : -1}>
       <svg
         className={styles.svg}
         xmlns="http://www.w3.org/2000/svg"

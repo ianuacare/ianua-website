@@ -1,0 +1,66 @@
+.proof {
+  background: var(--paper-deep);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+.inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .label {
+    min-height: 0;
+  }
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding-block: 0.5rem;
+  border-top: 1px solid rgba(10, 24, 48, 0.18);
+  padding-top: 1rem;
+}
+
+.value {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.suffix {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.label {
+  margin: 0;
+  max-width: 28ch;
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--ink-mute);
+  /* Stessa “corsia” verticale per tutte le colonne: due righe di testo */
+  min-height: calc(1.45em * 2);
+}

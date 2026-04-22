@@ -1,14 +1,27 @@
 .wrap {
+  display: inline-block;
   width: min(72vw, 280px);
-  cursor: pointer;
+  color: currentColor;
   transform-origin: 50% 45%;
   transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s var(--ease-out),
     filter 0.55s ease;
 }
 
+.interactive {
+  cursor: pointer;
+}
+
+.toneInk {
+  color: var(--ink);
+}
+
+.tonePaper {
+  color: var(--paper);
+}
+
 .fill {
-  fill: #f5f5f5;
+  fill: currentColor;
   transition: fill 0.45s ease;
 }
 
@@ -19,35 +32,32 @@
   vertical-align: middle;
 }
 
-.wrap:hover,
-.wrap:focus-visible {
-  transform: scale(1.055) translateY(-6px) rotate(-0.8deg);
-  filter: drop-shadow(0 18px 42px rgba(255, 255, 255, 0.38))
-    drop-shadow(0 6px 14px rgba(0, 60, 120, 0.35));
+.interactive:hover,
+.interactive:focus-visible {
+  transform: scale(1.04) translateY(-3px);
+  filter: drop-shadow(0 12px 32px rgba(10, 24, 48, 0.18));
 }
 
-.wrap:hover .fill,
-.wrap:focus-visible .fill {
-  fill: #ffffff;
+.interactive.tonePaper:hover,
+.interactive.tonePaper:focus-visible {
+  filter: drop-shadow(0 12px 32px rgba(255, 255, 255, 0.28))
+    drop-shadow(0 4px 10px rgba(0, 60, 120, 0.32));
 }
 
-.wrap:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.85);
+.interactive:focus-visible {
+  outline: 2px solid currentColor;
   outline-offset: 12px;
+  border-radius: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wrap {
-    transition: none;
-  }
-
+  .wrap,
   .fill {
     transition: none;
   }
 
-  .wrap:hover,
-  .wrap:focus-visible {
+  .interactive:hover,
+  .interactive:focus-visible {
     transform: none;
-    filter: drop-shadow(0 10px 24px rgba(255, 255, 255, 0.28));
   }
 }

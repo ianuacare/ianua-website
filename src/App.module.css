@@ -42,7 +42,7 @@
     Helvetica,
     Arial,
     sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(1rem, 2.8vw, 1.65rem);
   letter-spacing: 0.42em;
   text-transform: lowercase;

@@ -22,7 +22,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: url("../../assets/patterns/A4o_bianco.svg");
+  background-image: url("../../../brand_ianua/Sfondo_sito_webSVG/ianua_ianuacare.svg");
   background-repeat: repeat;
   background-size: clamp(260px, 42vw, 380px) auto;
   opacity: 0.42;

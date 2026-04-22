@@ -1,38 +1,13 @@
-import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import logoIanuaSfum from "../../assets/branding/Ianua_sfum.svg";
 import { footer } from "../../copy/home";
 import styles from "./SiteFooter.module.css";
 
-const marqueeWords = Array.from({ length: 6 }, () => "Ianua");
-
 export function SiteFooter() {
-  const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end end"],
-  });
-  const x = useTransform(scrollYProgress, [0, 1], ["8%", "-32%"]);
-
   const isExternalRoute = (href: string) => href === "/" || href.startsWith("mailto");
 
   return (
-    <footer ref={ref} className={styles.footer}>
-      <motion.div
-        className={styles.marquee}
-        aria-hidden
-        style={reduce ? undefined : { x }}
-      >
-        {marqueeWords.map((w, i) => (
-          <span key={i} className={styles.marqueeWord}>
-            {w}
-            <span className={styles.marqueeDot}>·</span>
-          </span>
-        ))}
-      </motion.div>
-
+    <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.brandCol}>
           <img

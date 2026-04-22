@@ -3,9 +3,16 @@ import styles from "./IanuaLogo.module.css";
 /**
  * Logo vettoriale Ianua bianco (ianua_bianco.svg). Animazione hover via CSS.
  */
-export function IanuaLogo() {
+type IanuaLogoProps = {
+  className?: string;
+};
+
+export function IanuaLogo({ className }: IanuaLogoProps) {
   return (
-    <div className={styles.wrap} tabIndex={0}>
+    <div
+      className={[styles.wrap, className].filter(Boolean).join(" ")}
+      tabIndex={0}
+    >
       <svg
         className={styles.svg}
         xmlns="http://www.w3.org/2000/svg"

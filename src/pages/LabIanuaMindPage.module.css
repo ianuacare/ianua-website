@@ -1,0 +1,304 @@
+.page {
+  --ianua-bg-deep: #050d1a;
+  --ianua-bg: #0a1830;
+  --ianua-surface: #0c1f3d;
+  --ianua-text: rgba(250, 252, 255, 0.94);
+  --ianua-muted: rgba(230, 238, 252, 0.62);
+  --ianua-accent: #9ec8ff;
+  --ianua-border: rgba(255, 255, 255, 0.09);
+  --ianua-glow: rgba(120, 180, 255, 0.12);
+
+  min-height: 100dvh;
+  background:
+    radial-gradient(
+      ellipse 120% 80% at 50% -30%,
+      rgba(60, 110, 190, 0.22),
+      transparent 55%
+    ),
+    linear-gradient(180deg, var(--ianua-bg-deep) 0%, var(--ianua-bg) 42%, #071328 100%);
+  color: var(--ianua-text);
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+.em {
+  font-style: italic;
+  color: var(--ianua-accent);
+  font-weight: 400;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(1rem, 3vw, 1.35rem) clamp(1.25rem, 5vw, 3rem);
+  background: linear-gradient(
+    180deg,
+    rgba(5, 13, 26, 0.92) 0%,
+    rgba(5, 13, 26, 0.65) 70%,
+    transparent 100%
+    );
+  backdrop-filter: blur(10px);
+}
+
+.headerLogoLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.headerLogo {
+  width: clamp(140px, 28vw, 200px) !important;
+  max-width: 200px;
+}
+
+.headerLogo:hover,
+.headerLogo:focus-visible {
+  transform: none;
+  filter: drop-shadow(0 8px 20px rgba(120, 170, 255, 0.25));
+}
+
+main {
+  padding: clamp(1.5rem, 5vw, 3rem) clamp(1.25rem, 5vw, 3rem) clamp(4rem, 12vw, 6rem);
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.hero {
+  padding-bottom: clamp(3rem, 10vw, 5rem);
+}
+
+.heroTitle {
+  margin: 0 0 clamp(2.5rem, 8vw, 4rem);
+  font-weight: 300;
+  font-size: clamp(2.15rem, 6.5vw, 4.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: clamp(2.5rem, 7vw, 3.75rem);
+}
+
+@media (min-width: 640px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+}
+
+.stat {
+  padding: clamp(1.25rem, 3vw, 1.65rem) 0;
+  border-top: 1px solid var(--ianua-border);
+}
+
+.statValue {
+  display: block;
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.statLabel {
+  display: block;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  color: var(--ianua-muted);
+  font-weight: 300;
+  max-width: 16rem;
+}
+
+.lede,
+.ledeSecondary {
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  line-height: 1.65;
+  color: rgba(248, 250, 255, 0.88);
+  max-width: 52rem;
+}
+
+.ledeSecondary {
+  margin-top: 1.35rem;
+  color: var(--ianua-muted);
+}
+
+.products {
+  padding-top: clamp(2rem, 6vw, 3.5rem);
+}
+
+.sectionTitle {
+  margin: 0 0 clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  letter-spacing: -0.02em;
+}
+
+.productCard {
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    145deg,
+    rgba(18, 45, 82, 0.55) 0%,
+    rgba(10, 28, 52, 0.85) 100%
+  );
+  border: 1px solid var(--ianua-border);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 24px 80px rgba(0, 20, 50, 0.45);
+  overflow: hidden;
+}
+
+.productCardInner {
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.productHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.productLogo {
+  display: block;
+  width: min(220px, 70vw);
+  height: auto;
+}
+
+.productCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--ianua-accent);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.productCta:hover,
+.productCta:focus-visible {
+  border-bottom-color: rgba(158, 200, 255, 0.55);
+  outline: none;
+}
+
+.productBullets {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-weight: 300;
+  font-size: clamp(0.98rem, 2vw, 1.08rem);
+  line-height: 1.7;
+  color: rgba(248, 250, 255, 0.82);
+}
+
+.productBullets li {
+  margin-bottom: 0.35rem;
+}
+
+.tech {
+  padding-top: clamp(3.5rem, 10vw, 5.5rem);
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+@media (min-width: 720px) {
+  .techGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.techCard {
+  padding: clamp(1.5rem, 3vw, 1.85rem);
+  border-radius: 1rem;
+  background: rgba(12, 31, 61, 0.45);
+  border: 1px solid var(--ianua-border);
+}
+
+.techOrb {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+  background: radial-gradient(
+    circle at 30% 25%,
+    rgba(180, 215, 255, 0.45),
+    rgba(40, 90, 160, 0.25) 45%,
+    rgba(10, 30, 55, 0.9) 100%
+  );
+  box-shadow: 0 12px 40px var(--ianua-glow);
+}
+
+.techOrbB {
+  background: radial-gradient(
+    circle at 35% 30%,
+    rgba(140, 200, 255, 0.35),
+    rgba(30, 70, 130, 0.35) 50%,
+    rgba(8, 22, 45, 0.95) 100%
+  );
+}
+
+.techOrbC {
+  background: radial-gradient(
+    circle at 25% 35%,
+    rgba(100, 180, 255, 0.4),
+    rgba(25, 55, 110, 0.4) 48%,
+    rgba(6, 18, 38, 0.96) 100%
+  );
+}
+
+.techCardTitle {
+  margin: 0 0 0.5rem;
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.techCardText {
+  margin: 0;
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ianua-muted);
+}
+
+.footer {
+  padding: clamp(2.5rem, 8vw, 4rem) clamp(1.25rem, 5vw, 3rem);
+  border-top: 1px solid var(--ianua-border);
+  text-align: center;
+}
+
+.footerTagline {
+  margin: 0 0 0.75rem;
+  font-weight: 300;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  color: rgba(248, 250, 255, 0.85);
+}
+
+.footerLegal {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(200, 215, 235, 0.45);
+  max-width: 28rem;
+  margin-inline: auto;
+  line-height: 1.5;
+}

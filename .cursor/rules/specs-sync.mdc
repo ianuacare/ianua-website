@@ -1,0 +1,15 @@
+---
+description: Allineamento specs/api tra ianua-mind (backend) e ianua-mind_front
+alwaysApply: true
+---
+
+# Sincronizzazione `specs/api/`
+
+Questo repository mantiene OpenAPI in **`specs/api/`** allineata alle route Flask in `app/api/v1/`. Il frontend **ianua-mind_front** ha una **seconda copia** in `specs/api/` usata per `openapi-typescript`.
+
+## Regola operativa
+- Aggiornare sempre **qui** (codice + YAML) quando cambia il contratto HTTP reale.
+- Dopo il merge, **replicare** gli stessi file (o il diff) nel repo **ianua-mind_front** ed eseguire lì `npm run api:types` nella cartella `ianua-mind/`.
+- Le modifiche solo-frontend al contratto devono comunque essere implementate nel backend prima di considerare il contratto stabile.
+
+Evitare divergenze prolungate tra le due cartelle `specs/api/`.

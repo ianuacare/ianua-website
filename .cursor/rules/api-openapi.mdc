@@ -1,0 +1,21 @@
+---
+description: OpenAPI 3.1 spec required for every API endpoint
+globs: app/api/**/*.py
+alwaysApply: false
+---
+
+# API OpenAPI Requirements
+
+Ogni route HTTP esposta sotto `app/api/v1/` deve avere documentazione corrispondente in `specs/api/` (`openapi.yml`, `paths/`, `schemas/`). Se cambi il payload o i codici di risposta, aggiorna gli YAML nello stesso cambiamento.
+
+Per endpoint: method + path, summary, parameters, request body (se presente), responses (200/201, 401, 422, 500; 404 per risorse addressable), `security: [ bearerAuth: [] ]` dove serve auth, almeno un esempio per risposta rilevante.
+
+**Versioning:** le route implementate usano `/api/v1/...`. Nuovi endpoint seguono lo stesso prefisso.
+
+**Validazione prima del commit** (con `openapi-spec-validator` installato, vedi `requirements.txt`):
+
+```bash
+python -m openapi_spec_validator specs/api/openapi.yml
+```
+
+In alternativa senza dipendenza locale: validare riferimenti e schema con uno strumento equivalente o CI quando disponibile.

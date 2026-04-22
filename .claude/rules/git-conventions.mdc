@@ -1,0 +1,20 @@
+---
+description: Git workflow, Conventional Commits, branch naming, and PR rules
+alwaysApply: true
+---
+
+# Git Conventions
+
+## Commits (Conventional Commits)
+Format: `<type>(<scope>): <description>`. Types: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `perf`, `security`. Scopes (esempi): `api`, `auth`, `sessions`, `patients`, `paths`, `transcriptions`, `summaries`, `audio`, `notes`, `celery`, `integrations`, `specs`, `config`, `deps`, `infra`. Breaking: `feat(api)!: ...`.
+
+Examples: `feat(sessions): add audio proxy upload URL`, `fix(auth): handle Cognito challenge`, `test(api): cover patient list pagination`.
+
+## Branches
+`<type>/<issue>-<short-desc>` e.g. `feat/12-session-transcription-status`.
+
+## Pull requests
+Conventional title; body `Closes #N` when applicable; squash to `main`; CI green when present; review per cambi non banali.
+
+## Tooling
+Conventional Commits sono la convenzione del team. Se in repo è presente Commitizen (`.cz.toml`), usare `cz commit`; altrimenti messaggi equivalenti a mano.

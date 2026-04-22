@@ -1,0 +1,26 @@
+---
+description: Flask architecture — blueprints, app factory, errors, Celery
+globs: app/**/*.py
+alwaysApply: false
+---
+
+# Flask Patterns (Ianu Mind)
+
+## App factory
+- Usare `create_app()`; configurazione da `app.config.Config` e override in test via `test_config`
+- Registrare blueprint una volta; prefisso API `/api/v1` come in `app/__init__.py`
+
+## Blueprint e handler
+- Route sottili: parsing input → chiamata adapter/servizio in `app/integrations/` o estensioni → risposta JSON / codice HTTP
+- Evitare logica di dominio complessa dentro le funzioni di route; estrarre in funzioni o servizi testabili
+
+## Error handling
+- Usare `app/errors.py` e handler registrati per errori coerenti e status HTTP corretti
+- Non restituire stack trace o dettagli interni al client
+
+## Celery
+- Task in `app/tasks/`; broker/backend da env (`CELERY_BROKER_URL`, `CELERY_RESULT_BACKEND`)
+- In test, `CELERY_TASK_ALWAYS_EAGER` quando serve esecuzione sincrona
+
+## Test
+- Test API con Flask test client in `tests/test_*_api.py`; mock degli adapter per errori upstream e timeout

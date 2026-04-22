@@ -1,0 +1,9 @@
+---
+description: OpenAPI must match Flask JSON responses
+globs: app/api/**/*.py
+alwaysApply: false
+---
+
+# JSON contract e OpenAPI
+
+Le funzioni di route e gli helper che costruiscono il JSON (`jsonify`, dict serializzati, ecc.) definiscono il contratto reale. Quando modifichi risposte o codici di stato in `app/api/`, aggiorna `specs/api/` (paths/schemas) nello stesso task. Vedi la regola `api-openapi` per validazione.

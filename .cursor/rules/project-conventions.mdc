@@ -1,0 +1,33 @@
+---
+description: Core Ianua Mind project conventions — stack, patterns, tools
+alwaysApply: true
+---
+
+# Ianua Mind — Backend Conventions
+
+## Stack
+- Python 3.12+ / Flask 3 / Flask-CORS / Gunicorn
+- Celery + Redis (broker e backend risultati)
+- `ianuacare[aws,postgres,audio]` (dominio, DB, audio/ASR)
+- AWS Cognito (auth), PostgreSQL (`DATABASE_URL`, schema `core`), S3 (artifact audio), OpenAI (Whisper + chat per task Celery)
+
+## Layout
+- Factory app: `create_app` in `app/__init__.py`; blueprint API in `app/api/v1/` (prefisso `/api/v1`)
+- Integrazioni verso servizi Ianua: `app/integrations/` (adapter, niente logica sparsa nelle route)
+- Task asincroni: `app/tasks/` (Celery); import dei moduli task dopo init Celery come in `create_app`
+- Errori HTTP: `app/errors.py` + handler registrati sulla app
+
+## API
+- Contratto JSON stabile; errori strutturati coerenti con gli schema in `specs/api/schemas/`
+- CORS: `CORS_ORIGINS` (default dev `http://localhost:3000`)
+
+## DB e specifiche
+- Schema di riferimento e tracking: `specs/db/` (vedi README)
+- Prima di feature che toccano il DB: impatto documentato nel tracking del repo
+
+## Qualità
+- Test: `PYTHONPATH=. pytest -q` (suite in `tests/`)
+- OpenAPI: `specs/api/` deve riflettere le route implementate (vedi regole `api-openapi`)
+
+## Configurazione
+- Solo variabili d’ambiente / config oggetto in `app/config.py` — nessun segreto in codice

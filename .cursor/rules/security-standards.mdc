@@ -1,0 +1,34 @@
+---
+description: Security standards for healthcare data — Flask API, Cognito, env
+globs: app/**/*.py
+alwaysApply: false
+---
+
+# Security Standards (Healthcare + Flask)
+
+## PII & health data
+- **Non** loggare nomi paziente, codici fiscali, diagnosi o altri dati sanitari in chiaro
+- **Non** esporre PII nei messaggi di errore o nelle risposte oltre quanto necessario al flusso
+- Redigere campi sensibili prima di logging strutturato
+
+## Autenticazione e autorizzazione
+- Auth JWT via Cognito (Bearer); ogni route protetta deve verificare il token e applicare i controlli di dominio previsti (tenant / paziente / sessione)
+- Centralizzare la lettura dell’identità e gli errori 401/403; evitare duplicare logica fragile in ogni handler
+
+## Input validation
+- Validare query, path e body in modo esplicito (schema, tipi, limiti)
+- Per operazioni sensibili, rifiutare campi non attesi se il contratto è strict
+
+## SQL injection
+- Solo query parametrizzate / API fornite da `ianuacare` o client DB — mai interpolazione di input utente in stringhe SQL
+
+## HTTP e CORS
+- `debug` disattivato in produzione
+- CORS con allowlist esplicita (`CORS_ORIGINS`), mai `*` con credenziali
+- Upload: rispettare limiti di body (`MAX_AUDIO_UPLOAD_BYTES` / presigned) e non loggare contenuto file
+
+## Dipendenze
+- Prima di un rilascio: controllare vulnerabilità note sulle dipendenze (`pip-audit` o equivalente) quando il processo di team lo prevede
+
+## Segreti
+- Cognito, AWS, OpenAI, DB: solo variabili d’ambiente o secret manager — mai commit di `.env`, chiavi o token

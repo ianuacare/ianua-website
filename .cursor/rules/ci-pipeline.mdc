@@ -1,0 +1,37 @@
+---
+description: CI/CD target and local checks for Flask backend
+globs: .github/**/*
+alwaysApply: false
+---
+
+# CI/CD Pipeline
+
+Questo repository **non** include ancora workflow sotto `.github/`; la struttura sotto è il **target** quando verranno aggiunte le Actions.
+
+## Target workflow (esempio)
+
+```
+validate.yml (on: push/PR to main)
+  ├── lint (opzionale: ruff / mypy se adottati)
+  ├── test
+  │     └── PYTHONPATH=. pytest -q
+  └── openapi
+        └── python -m openapi_spec_validator specs/api/openapi.yml
+
+deploy.yml (se applicabile)
+  ├── Build immagine Docker (es. da Dockerfile / compose di produzione)
+  └── Push registry / deploy ambiente
+```
+
+## Comandi locali consigliati prima di aprire una PR
+- `PYTHONPATH=. pytest -q`
+- `python -m openapi_spec_validator specs/api/openapi.yml`
+
+## Regole per future modifiche a GitHub Actions
+- Non rimuovere step di test o validazione contratto senza accordo di team
+- Segreti solo da GitHub Secrets / environment — mai in chiaro nel YAML
+- `concurrency` per evitare run duplicati su branch (cancel-in-progress: true) dove ha senso
+
+## Merge
+- Preferenza: squash merge su `main`
+- Branch protection e CI verdi quando la pipeline esiste

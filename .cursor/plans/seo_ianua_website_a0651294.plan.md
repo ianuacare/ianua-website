@@ -3,7 +3,7 @@ name: SEO Ianua Website
 overview: Riallineare URL e contenuto indicizzabile (Home su `/`), aggiornare meta/canonical/sitemap/robots e dati strutturati coerenti con la pagina, usando variabili d’ambiente per il dominio canonico. Include una nota realistica sulla visibilità in SERP (Google non garantisce posizioni).
 todos:
   - id: routing
-    content: "Aggiornare App.tsx: `/`→Home, `/coming-soon`→ComingSoon; redirect Netlify 301 `/home`→`/`"
+    content: "Aggiornare App.tsx: `/`→Home, `/coming-soon`→ComingSoon; redirect Vercel 301 `/home`→`/`"
     status: completed
   - id: helmet-env
     content: Aggiungere react-helmet-async, VITE_SITE_URL, meta+canonical per Home e ComingSoon; allineare index.html fallback
@@ -48,14 +48,14 @@ Google **non garantisce posizioni** né il “primo risultato”; obiettivi real
 ### 1. Routing e redirect
 
 - **`App.tsx`**: `path="/"` → `Home`; aggiungere `path="/coming-soon"` → `ComingSoon`; rimuovere o mantenere `/home` solo come alias.
-- **Retrocompatibilità**: chi ha segnalibri su `/home` deve arrivare alla nuova home: aggiungere in [`netlify.toml`](netlify.toml) redirect **301** da `/home` e `/home/` a `/` **prima** della regola SPA `/* → /index.html` ([consolidamento URL duplicati](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)).
+- **Retrocompatibilità**: chi ha segnalibri su `/home` deve arrivare alla nuova home: in [`vercel.json`](vercel.json) redirect **301** da `/home` e `/home/` a `/` (prima del rewrite SPA) ([consolidamento URL duplicati](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)).
 - **Catch-all**: valutare se `*` deve ancora puntare a `/` (Home) — resta sensato per SPA.
 
 ### 2. Meta dinamiche per route (SPA)
 
 - Aggiungere **`react-helmet-async`**: wrapper `HelmetProvider` in [`src/main.tsx`](src/main.tsx) (o dove monti l’app).
 - In **`Home`** e **`ComingSoon`**: `<Helmet>` con `title`, `meta name="description"`, Open Graph (`og:title`, `og:description`, `og:url`, `og:type`, `og:locale`), Twitter Card dove ha senso, **`link rel="canonical"`** con URL assoluto ([snippet / meta description](https://developers.google.com/search/docs/appearance/snippet), [canonical](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)).
-- **Variabile ambiente**: es. `VITE_SITE_URL=https://www.tuodominio.it` (senza slash finale) per costruire canonical e `og:url` in modo corretto su Netlify vs staging. Fallback documentato per build locale.
+- **Variabile ambiente**: es. `VITE_SITE_URL=https://www.tuodominio.it` (senza slash finale) per costruire canonical e `og:url` in modo corretto su Vercel vs staging. Fallback documentato per build locale.
 
 ### 3. Aggiornare default in `index.html`
 
@@ -89,7 +89,7 @@ Google **non garantisce posizioni** né il “primo risultato”; obiettivi real
 ## Verifica post-implementazione
 
 - Build `npm run build` e controllo che `dist/robots.txt` e `dist/sitemap.xml` siano presenti (Vite copia `public/`).
-- Test Netlify: `/home` → 301 → `/`; `/` serve Home ricca.
+- Test Vercel: `/home` → 301 → `/`; `/` serve Home ricca.
 - Strumenti esterni: **Rich Results Test** / Schema solo per JSON-LD valido; Search Console dopo deploy per **sitemap** e ispezione URL ([Search Console](https://developers.google.com/search/docs/monitor-debug/debug-search-performance)).
 
 ```mermaid

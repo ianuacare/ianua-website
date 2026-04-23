@@ -12,7 +12,7 @@ type ApiErr = {
   error: string;
 };
 
-const FUNCTIONS_PATH = "/.netlify/functions/generate-article";
+const API_PATH = "/api/generate-article";
 
 export default function GenerateArticle() {
   const [prompt, setPrompt] = useState("");
@@ -28,7 +28,7 @@ export default function GenerateArticle() {
       setLoading(true);
 
       try {
-        const res = await fetch(FUNCTIONS_PATH, {
+        const res = await fetch(API_PATH, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ prompt }),
@@ -53,7 +53,7 @@ export default function GenerateArticle() {
         setArticle(data.article);
       } catch {
         setError(
-          "Impossibile contattare il server. In locale avvia il sito con Netlify CLI (`netlify dev`) così la funzione è disponibile; con solo `npm run dev` l’endpoint non è servito.",
+          "Impossibile contattare l’API. In produzione verifica il deploy e la variabile AI_GATEWAY_API_KEY. In locale usa `vercel dev` (non basta `npm run dev`).",
         );
       } finally {
         setLoading(false);

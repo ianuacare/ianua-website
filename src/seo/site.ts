@@ -1,4 +1,4 @@
-/** Origine pubblica senza slash finale — da `VITE_SITE_URL` (build Netlify / CI). */
+/** Origine pubblica senza slash finale — da `VITE_SITE_URL` (build Vercel / CI). */
 export function getSiteOrigin(): string {
   const raw = import.meta.env.VITE_SITE_URL as string | undefined;
   const trimmed = raw?.trim().replace(/\/+$/, "");

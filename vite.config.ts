@@ -40,7 +40,7 @@ Sitemap: ${siteOrigin}/sitemap.xml
 }
 
 /**
- * Default base `/` → corretto per Netlify e dominio alla root.
+ * Default base `/` → corretto per Vercel e dominio alla root.
  * Per GitHub Pages (progetto in sottopath): `vite build --base /ianua-website/`
  * oppure variabile `BASE_URL` gestita dal CLI Vite.
  *

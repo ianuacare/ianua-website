@@ -5,9 +5,16 @@ type PageMetaProps = {
   title: string;
   description: string;
   canonicalPath: string;
+  /** Es. pagine interne o strumenti non da indicizzare. */
+  noIndex?: boolean;
 };
 
-export function PageMeta({ title, description, canonicalPath }: PageMetaProps) {
+export function PageMeta({
+  title,
+  description,
+  canonicalPath,
+  noIndex = false,
+}: PageMetaProps) {
   const canonical = absoluteUrl(canonicalPath);
   const ogImage = absoluteUrl("/og-image.png");
 
@@ -16,6 +23,9 @@ export function PageMeta({ title, description, canonicalPath }: PageMetaProps) {
       <html lang="it" />
       <title>{title}</title>
       <meta name="description" content={description} />
+      {noIndex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : null}
       <link rel="canonical" href={canonical} />
 
       <meta property="og:type" content="website" />

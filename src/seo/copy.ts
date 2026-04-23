@@ -11,3 +11,10 @@ export const seoComingSoon = {
   description:
     "Ianua Care — piattaforma in arrivo. Healthcare technology pensata per chi cura.",
 } as const;
+
+/** Strumento interno: bozza articolo magazine da prompt (non indicizzato). */
+export const seoGenerateArticle = {
+  title: "Ianua — Genera articolo magazine",
+  description:
+    "Generazione bozza editoriale per il magazine Ianua a partire da un brief. Uso interno.",
+} as const;

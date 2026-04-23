@@ -6,20 +6,57 @@ import { EditorialText } from "../EditorialText";
 import { easeOut } from "./_motion";
 import styles from "./ContactBand.module.css";
 
+type SubmitStatus = "idle" | "loading" | "success" | "error";
+
+const contactEndpoint =
+  import.meta.env.VITE_CONTACT_API_URL?.trim() || "/api/send-contact";
+
 export function ContactBand() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.25 });
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!email.trim()) return;
-    const subject = encodeURIComponent("Richiesta di contatto — sito Ianua");
-    const body = encodeURIComponent(`Email del mittente: ${email}`);
-    window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    const trimmed = email.trim();
+    if (!trimmed) return;
+
+    setSubmitStatus("loading");
+    try {
+      const res = await fetch(contactEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed }),
+      });
+
+      let apiError = "";
+      try {
+        const data = (await res.json()) as { error?: string };
+        if (typeof data?.error === "string") apiError = data.error;
+      } catch {
+        /* risposta non JSON */
+      }
+
+      if (!res.ok) {
+        throw new Error(apiError || `HTTP ${res.status}`);
+      }
+
+      setSubmitStatus("success");
+      setEmail("");
+    } catch {
+      setSubmitStatus("error");
+    }
   };
+
+  const hint =
+    submitStatus === "loading"
+      ? "Invio in corso…"
+      : submitStatus === "success"
+        ? "Grazie. Abbiamo registrato la richiesta di contatto dal sito e ti ricontatteremo presto."
+        : submitStatus === "error"
+          ? "Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure scrivici direttamente a info@ianua.it."
+          : contact.hint;
 
   return (
     <section
@@ -81,16 +118,24 @@ export function ContactBand() {
                 autoComplete="email"
                 placeholder={contact.formPlaceholder}
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (submitStatus === "error") setSubmitStatus("idle");
+                }}
+                disabled={submitStatus === "loading"}
                 required
               />
-              <button type="submit" className={styles.submit}>
+              <button
+                type="submit"
+                className={styles.submit}
+                disabled={submitStatus === "loading"}
+              >
                 <span>{contact.formCta}</span>
                 <span aria-hidden>→</span>
               </button>
             </div>
-            <p className={styles.hint}>
-              {submitted ? "Apertura del client mail in corso..." : contact.hint}
+            <p className={styles.hint} role="status" aria-live="polite">
+              {hint}
             </p>
           </form>
         </motion.div>

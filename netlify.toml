@@ -2,6 +2,17 @@
   command = "npm run build"
   publish = "dist"
 
+# Retrocompatibilità URL home precedente → canonical sulla root
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/home/"
+  to = "/"
+  status = 301
+
 # SPA: tutte le route servono index.html (utile se aggiungi routing client-side)
 [[redirects]]
   from = "/*"

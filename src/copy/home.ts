@@ -252,7 +252,7 @@ export const footer = {
       title: "Contatti",
       links: [
         { label: "info@ianua.it", href: "mailto:info@ianua.it" },
-        { label: "Coming soon", href: "/" },
+        { label: "Coming soon", href: "/coming-soon" },
       ],
     },
   ],

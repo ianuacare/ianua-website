@@ -16,7 +16,7 @@ export function Header() {
   const reduce = useReducedMotion();
   const location = useLocation();
   const onHomeRoute =
-    location.pathname === "/home" || location.pathname === "/home/";
+    location.pathname === "/" || location.pathname === "";
 
   const { scrollY } = useScroll();
   const blur = useTransform(scrollY, [0, 120], [0, 14]);
@@ -89,7 +89,7 @@ export function Header() {
       >
         <div className={styles.inner}>
           <Link
-            to="/home"
+            to="/"
             className={styles.logoLink}
             aria-label="Ianua — torna all'inizio"
             onClick={handleLogoClick}

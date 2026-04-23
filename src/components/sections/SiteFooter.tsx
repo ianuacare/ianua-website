@@ -3,9 +3,23 @@ import logoIanuaSfum from "../../assets/branding/Ianua_sfum.svg";
 import { footer } from "../../copy/home";
 import styles from "./SiteFooter.module.css";
 
-export function SiteFooter() {
-  const isExternalRoute = (href: string) => href === "/" || href.startsWith("mailto");
+function FooterNavLink({ href, label }: { href: string; label: string }) {
+  const className = styles.colLink;
+  if (href.startsWith("/") && !href.startsWith("//")) {
+    return (
+      <Link to={href} className={className}>
+        {label}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} className={className}>
+      {label}
+    </a>
+  );
+}
 
+export function SiteFooter() {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
@@ -27,21 +41,11 @@ export function SiteFooter() {
             <div key={col.title} className={styles.col}>
               <h3 className={styles.colTitle}>{col.title}</h3>
               <ul className={styles.colList}>
-                {col.links.map((link) =>
-                  isExternalRoute(link.href) && link.href === "/" ? (
-                    <li key={link.label}>
-                      <Link to="/" className={styles.colLink}>
-                        {link.label}
-                      </Link>
-                    </li>
-                  ) : (
-                    <li key={link.label}>
-                      <a href={link.href} className={styles.colLink}>
-                        {link.label}
-                      </a>
-                    </li>
-                  ),
-                )}
+                {col.links.map((link) => (
+                  <li key={`${link.href}-${link.label}`}>
+                    <FooterNavLink href={link.href} label={link.label} />
+                  </li>
+                ))}
               </ul>
             </div>
           ))}

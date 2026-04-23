@@ -7,9 +7,10 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <Routes>
-        <Route path="/" element={<ComingSoon />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/home/" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/coming-soon" element={<ComingSoon />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="/home/" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </MotionConfig>

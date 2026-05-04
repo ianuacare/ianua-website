@@ -26,10 +26,10 @@ void main() {
   p.x *= u_resolution.x / u_resolution.y;
   float t = u_time * 1.8;
 
-  float waveA = sin((uv.x * 7.8) + (t * 2.15));
-  float waveB = sin((uv.y * 6.9) - (t * 1.85));
-  float waveC = sin(((uv.x + uv.y) * 6.4) + (t * 1.7));
-  float waveD = sin(((uv.x - uv.y) * 8.6) - (t * 2.25));
+  float waveA = sin((uv.x * 8.6) + (t * 2.15));
+  float waveB = sin((uv.y * 7.6) - (t * 1.85));
+  float waveC = sin(((uv.x + uv.y) * 7.1) + (t * 1.7));
+  float waveD = sin(((uv.x - uv.y) * 9.4) - (t * 2.25));
   float flow = (waveA * 0.36 + waveB * 0.24 + waveC * 0.2 + waveD * 0.2);
 
   float band1 = uv.y + flow * 0.35;

@@ -23,7 +23,6 @@ export const ecosystemLead: Segment[] = [
 export const navItems = [
   { href: "#ecosistema", label: "Ecosistema" },
   { href: "#approccio", label: "Approccio" },
-  { href: "#editoriale", label: "Editoriale" },
   { href: "#contatti", label: "Contatti" },
 ] as const;
 
@@ -114,7 +113,7 @@ export const ianuacare = {
     { text: "dimensione umana", bold: true },
     { text: " della medicina." },
   ] satisfies Segment[],
-  cta: { label: "Vai al magazine", href: "#editoriale" },
+  cta: { label: "Richiedi un contatto", href: "#contatti" },
   status: "in arrivo",
 };
 
@@ -181,32 +180,6 @@ export const audiences = {
   ],
 };
 
-export const insights = {
-  eyebrow: "Editoriale — Ianuacare",
-  title: [
-    [{ text: "Letture sul futuro", bold: true }],
-    [{ text: "della ", italic: false }, { text: "cura", italic: true }, { text: "." }],
-  ] as Segment[][],
-  status: "Magazine in arrivo",
-  items: [
-    {
-      category: "Visione",
-      date: "Prossimamente",
-      title: "Perché parliamo di servizi, non di AI",
-    },
-    {
-      category: "Pratica clinica",
-      date: "Prossimamente",
-      title: "Documenti clinici: dal silos al pattern",
-    },
-    {
-      category: "Salute mentale",
-      date: "Prossimamente",
-      title: "Marcatori emotivi nelle sedute: una lettura longitudinale",
-    },
-  ],
-};
-
 export const contact = {
   eyebrow: "Contatti",
   title: [
@@ -238,7 +211,7 @@ export const footer = {
       links: [
         { label: "Ianua Mind", href: "#ecosistema" },
         { label: "Ianua Studio", href: "#ecosistema" },
-        { label: "Ianuacare", href: "#editoriale" },
+        { label: "Ianuacare", href: "#ianuacare" },
       ],
     },
     {

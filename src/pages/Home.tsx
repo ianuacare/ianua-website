@@ -4,7 +4,6 @@ import { ProductsEcosystem } from "../components/sections/ProductsEcosystem";
 import { IanuacareCard } from "../components/sections/IanuacareCard";
 import { Approach } from "../components/sections/Approach";
 import { Audiences } from "../components/sections/Audiences";
-import { InsightsTeaser } from "../components/sections/InsightsTeaser";
 import { ContactBand } from "../components/sections/ContactBand";
 import { SiteFooter } from "../components/sections/SiteFooter";
 import { JsonLdOrganization } from "../components/seo/JsonLdOrganization";
@@ -31,7 +30,6 @@ export default function Home() {
         <IanuacareCard />
         <Approach />
         <Audiences />
-        <InsightsTeaser />
         <ContactBand />
         <SiteFooter />
       </main>

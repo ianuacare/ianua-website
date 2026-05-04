@@ -11,7 +11,7 @@ export function IanuacareCard() {
   const inView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section className={styles.section} aria-labelledby="ianuacare-heading">
+    <section id="ianuacare" className={styles.section} aria-labelledby="ianuacare-heading">
       <motion.div
         ref={ref}
         className={styles.card}

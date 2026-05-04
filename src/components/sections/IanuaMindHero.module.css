@@ -193,7 +193,7 @@
   position: relative;
   z-index: 3;
   transform-origin: 50% 45%;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   justify-self: end;
 }
 

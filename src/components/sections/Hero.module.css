@@ -36,7 +36,7 @@
   position: relative;
   z-index: 2;
   transform-origin: 50% 45%;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 
 .logoInner {

@@ -31,14 +31,6 @@ export function Hero() {
     [0, 1],
     motionSafe ? [0, 72] : [0, 0],
   );
-  const blurPx = useTransform(
-    scrollYProgress,
-    [0, 1],
-    motionSafe ? [0, 5] : [0, 0],
-  );
-  const filterBlur = useTransform(blurPx, (v) =>
-    v > 0 ? `blur(${v}px)` : "none",
-  );
 
   return (
     <section id="top" ref={sectionRef} className={styles.hero} style={brandBackdropVars}>
@@ -51,7 +43,6 @@ export function Hero() {
           scale,
           opacity,
           y,
-          filter: filterBlur,
         }}
       >
         <div className={styles.logoInner}>

@@ -23,8 +23,6 @@ export function IanuaMindHero() {
   const scale = useTransform(scrollYProgress, [0, 1], motionSafe ? [1, 0.82] : [1, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.35, 1], motionSafe ? [1, 0.88, 0.22] : [1, 1, 1]);
   const y = useTransform(scrollYProgress, [0, 1], motionSafe ? [0, 72] : [0, 0]);
-  const blurPx = useTransform(scrollYProgress, [0, 1], motionSafe ? [0, 5] : [0, 0]);
-  const filterBlur = useTransform(blurPx, (v) => (v > 0 ? `blur(${v}px)` : "none"));
 
   return (
     <section id="top" ref={sectionRef} className={styles.hero} style={brandBackdropVars}>
@@ -65,7 +63,7 @@ export function IanuaMindHero() {
         </div>
         <motion.div
           className={styles.logoStage}
-          style={{ scale, opacity, y, filter: filterBlur }}
+          style={{ scale, opacity, y }}
         >
           <div className={styles.logoInner}>
             <IanuaLogo tone="paper" interactive={false} className={styles.logoWordmark} />

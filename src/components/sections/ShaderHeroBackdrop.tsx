@@ -37,21 +37,22 @@ void main() {
   float band3 = (uv.x * 0.55 + uv.y * 0.45) + waveC * 0.22 + waveD * 0.18;
 
   vec3 deep = vec3(0.03, 0.10, 0.25);
-  vec3 mid = vec3(0.08, 0.22, 0.46);
-  vec3 glow = vec3(0.16, 0.42, 0.76);
-  vec3 highlight = vec3(0.48, 0.78, 0.96);
+  vec3 mid = vec3(0.07, 0.20, 0.40);
+  vec3 glow = vec3(0.12, 0.34, 0.62);
+  vec3 highlight = vec3(0.34, 0.63, 0.85);
 
   vec3 layer1 = mix(deep, glow, smoothstep(-0.35, 1.25, band1));
   vec3 layer2 = mix(mid, highlight, smoothstep(-0.35, 1.25, band2));
   vec3 layer3 = mix(deep, highlight, smoothstep(-0.4, 1.3, band3));
 
-  vec3 color = layer1 * 0.42 + layer2 * 0.33 + layer3 * 0.25;
+  vec3 color = layer1 * 0.5 + layer2 * 0.32 + layer3 * 0.18;
 
   float centerGlow = smoothstep(1.25, 0.04, length(p));
   float pulse = sin(t * 0.9) * 0.5 + 0.5;
-  color = mix(color, glow, centerGlow * (0.26 + pulse * 0.14));
+  color = mix(color, glow, centerGlow * (0.16 + pulse * 0.08));
+  color = mix(deep, color, 0.82);
 
-  gl_FragColor = vec4(color, 1.0);
+  gl_FragColor = vec4(color, 0.86);
 }
 `;
 

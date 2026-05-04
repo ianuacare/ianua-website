@@ -24,7 +24,7 @@ void main() {
   vec2 uv = gl_FragCoord.xy / u_resolution.xy;
   vec2 p = uv - 0.5;
   p.x *= u_resolution.x / u_resolution.y;
-  float t = u_time * 2.9;
+  float t = u_time * 1.8;
 
   float waveA = sin((uv.x * 7.8) + (t * 2.15));
   float waveB = sin((uv.y * 6.9) - (t * 1.85));

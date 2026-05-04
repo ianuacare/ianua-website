@@ -1,167 +1,95 @@
 /**
- * Copy editoriale per la home di Ianua Mind.
+ * Copy editoriale per la home di Ianua.
  * Centralizzata per separare contenuti e UI.
+ * I segmenti `italic: true` vengono renderizzati in Helvetica Neue Light Italic come accento editoriale.
+ * I segmenti `bold: true` enfatizzano parole chiave senza appesantire il blocco.
  */
 
 export type Segment = { text: string; italic?: boolean; bold?: boolean };
 
+/** Titoli a due righe — sezione Ecosistema prodotti */
+export const ecosystemTitle: Segment[][] = [
+  [{ text: "Due prodotti.", bold: true }],
+  [{ text: "Una visione", italic: true }, { text: " della cura." }],
+];
+
+/** Lead sotto il titolo della sezione Ecosistema prodotti */
+export const ecosystemLead: Segment[] = [
+  { text: "Strumenti progettati per " },
+  { text: "il lavoro reale di chi cura", bold: true },
+  { text: ": dalla psicoterapia all'analisi della documentazione clinica negli ospedali." },
+];
+
 export const navItems = [
-  { href: "#come-funziona", label: "Come funziona" },
   { href: "#ecosistema", label: "Ecosistema" },
   { href: "#approccio", label: "Approccio" },
   { href: "#contatti", label: "Contatti" },
 ] as const;
 
-export const hero = {
-  eyebrow: "Ianua Mind",
-  title: [
-    [{ text: "Insight clinici strutturati,", bold: true }],
-    [{ text: "senza perdere la relazione terapeutica." }],
-  ] as Segment[][],
-  body: [
-    { text: "Registra le sedute in modo sicuro, ottieni " },
-    { text: "sintesi e segnali utili", bold: true },
-    { text: ", segui l'evoluzione del percorso nel tempo e resta concentrato sul lavoro clinico." },
-  ] as Segment[],
-  primaryCta: { label: "Richiedi demo", href: "#contatti" },
-  secondaryCta: { label: "Vedi come funziona", href: "#come-funziona" },
-};
-
 export const proofBar = {
   metrics: [
     {
       value: "100%",
-      label: "Focus su psicologi e professionisti della salute mentale",
+      label: "Focus sui professionisti sanitari",
     },
     {
-      value: "4",
-      label: "Tipi di insight immediati: sintesi, marcatori, temi, timeline",
+      value: "3",
+      label: "Contesti operativi: ospedali, cliniche, studi privati",
     },
     {
-      value: "1",
-      label: "Esperienza unica: privacy-by-design con AI human-centred",
+      value: "2",
+      label: "Prodotti integrati nell'ecosistema Ianua",
     },
   ],
 };
-
-export const mindPainPoints = {
-  eyebrow: "Problemi che risolve",
-  title: [
-    [{ text: "Meno dispersione.", bold: true }],
-    [{ text: "Più continuità clinica." }],
-  ] as Segment[][],
-  items: [
-    {
-      title: "Note frammentate",
-      body: "Trasforma osservazioni sparse in sintesi leggibili e coerenti tra una seduta e l'altra.",
-    },
-    {
-      title: "Segnali deboli nel tempo",
-      body: "Evidenzia marcatori emotivi e ricorrenze che rischiano di perdersi nella memoria operativa.",
-    },
-    {
-      title: "Difficoltà nel monitoraggio",
-      body: "Costruisce una vista evolutiva del percorso terapeutico utile in supervisione e follow-up.",
-    },
-  ],
-};
-
-export const howItWorks = {
-  eyebrow: "Come funziona",
-  title: [
-    [{ text: "Tre step." }],
-    [{ text: "Un workflow clinico naturale.", bold: true }],
-  ] as Segment[][],
-  steps: [
-    {
-      title: "Registra",
-      body: "Acquisisci la seduta in ambiente sicuro con accesso riservato al professionista.",
-    },
-    {
-      title: "Analizza",
-      body: "Ottieni riassunti automatici, marcatori emotivi e temi ricorrenti strutturati.",
-    },
-    {
-      title: "Monitora",
-      body: "Consulta la progressione nel tempo e prepara il prossimo incontro con più contesto.",
-    },
-  ],
-};
-
-export const mindFeatureStack = {
-  eyebrow: "Feature stack Ianua Mind",
-  title: [
-    [{ text: "Tutto il necessario" }],
-    [{ text: "per seguire il percorso in profondità.", bold: true }],
-  ] as Segment[][],
-  features: [
-    {
-      title: "Riassunti automatici",
-      body: "Sintesi per ridurre il tempo di rielaborazione post-seduta.",
-    },
-    {
-      title: "Marcatori emotivi",
-      body: "Segnali strutturati su tono, stress e stabilità narrativa.",
-    },
-    {
-      title: "Temi ricorrenti",
-      body: "Pattern che emergono tra sedute e aiutano la lettura longitudinale.",
-    },
-    {
-      title: "Timeline terapeutica",
-      body: "Evoluzione visuale del percorso per decisioni più informate.",
-    },
-  ],
-};
-
-/** Titoli a due righe — sezione Ecosistema prodotti */
-export const ecosystemTitle: Segment[][] = [
-  [{ text: "Ianua Mind al centro.", bold: true }],
-  [{ text: "Ecosistema", italic: true }, { text: " per crescere con te." }],
-];
-
-/** Lead sotto il titolo della sezione Ecosistema prodotti */
-export const ecosystemLead: Segment[] = [
-  { text: "Ianua Mind è la soluzione dedicata ai professionisti della salute mentale. " },
-  { text: "Ianua Studio", bold: true },
-  { text: " estende la stessa visione a ospedali e ricerca clinica." },
-];
 
 export const products = [
   {
     key: "mind",
     eyebrow: "Per psicologi e professionisti della salute mentale",
     name: "Ianua Mind",
-    tagline: "",
+    tagline:
+      "",
     bodySegments: [
       { text: "Ianua Mind", bold: true },
       {
-        text: " permette di registrare le sedute in modo sicuro e ottenere insight strutturati utili al lavoro clinico quotidiano.",
+        text: " permette di registrare le sedute in modo sicuro, con accesso esclusivo per il professionista, e di ottenere ",
       },
+      { text: "insight strutturati", bold: true },
+      { text: " attraverso analisi supportate da intelligenza artificiale." },
     ] satisfies Segment[],
     bullets: [
-      "Registrazione privata delle sedute",
-      "Sintesi automatica ad alta leggibilità",
-      "Marcatori emotivi e temi ricorrenti",
-      "Timeline evolutiva del percorso",
+      "Registrazione sedute con archiviazione privata",
+      "Generazione automatica di riassunti",
+      "Individuazione di marcatori emotivi",
+      "Identificazione di temi ricorrenti nel tempo",
+      "Visualizzazione dell'evoluzione del percorso terapeutico",
     ],
-    cta: { label: "Richiedi demo Ianua Mind", href: "#contatti" },
+    cta: { label: "Scopri Ianua Mind", href: "#contatti" },
   },
   {
     key: "studio",
     eyebrow: "Per ospedali, cliniche e centri di ricerca",
     name: "Ianua Studio",
-    tagline: "",
+    tagline:
+      "",
     bodySegments: [
       { text: "Ianua Studio", bold: true },
-      { text: " trasforma la documentazione clinica in informazioni strutturate per diagnosi e ricerca." },
+      {
+        text: " parte da un insieme di documenti clinici relativi a diverse ospedalizzazioni di un paziente e ne estrae le ",
+      },
+      { text: "informazioni rilevanti", bold: true },
+      {
+        text: ", utili sia al processo diagnostico sia alla ricerca scientifica.",
+      },
     ] satisfies Segment[],
     bullets: [
-      "Estrazione di dati clinici rilevanti",
-      "Pattern e correlazioni tra casi",
-      "Supporto al processo decisionale",
+      "Estrazione di informazioni strutturate da documenti clinici",
+      "Identificazione di pattern, correlazioni e similarità",
+      "Supporto al processo decisionale clinico",
+      "Analisi a fini di ricerca: statistiche, insight, confronti tra casi",
     ],
-    cta: { label: "Scopri Ianua Studio", href: "#ecosistema" },
+    cta: { label: "Scopri Ianua Studio", href: "#contatti" },
   },
 ] as const;
 
@@ -179,45 +107,51 @@ export const ianuacare = {
   ] satisfies Segment[][],
   bodySegments: [
     { text: "Ianuacare", bold: true },
-    { text: " è il progetto editoriale di Ianua: uno spazio per raccontare innovazione, ricerca e cura." },
+    { text: " è il progetto editoriale di Ianua. Uno spazio dove raccontiamo come la " },
+    { text: "tecnologia", bold: true },
+    { text: " può potenziare — e mai sostituire — la " },
+    { text: "dimensione umana", bold: true },
+    { text: " della medicina." },
   ] satisfies Segment[],
-  cta: { label: "Richiedi una demo", href: "#contatti" },
+  cta: { label: "Richiedi un contatto", href: "#contatti" },
   status: "in arrivo",
 };
 
 export const approach = {
-  eyebrow: "Approccio e compliance",
+  eyebrow: "Approccio",
   title: [
-    [{ text: "Privacy by design.", bold: true }],
-    [{ text: "AI al servizio del giudizio clinico." }],
+    [{ text: "Quattro principi.", bold: true }],
+    [{ text: "Una sola ", italic: false }, { text: "direzione", italic: true }, { text: ".", italic: false }],
   ] as Segment[][],
   features: [
     {
       title: "Privacy by design",
       text: [
-        { text: "Archiviazione sicura e accesso riservato al professionista", bold: true },
-        { text: ", con un impianto progettato per il contesto sanitario." },
+        { text: "Archiviazione sicura", bold: true },
+        {
+          text: ", accesso esclusivo al professionista, conformità ai requisiti del settore sanitario.",
+        },
       ] satisfies Segment[],
     },
     {
       title: "Insight strutturati",
       text: [
-        { text: "Dalla seduta a dati leggibili", bold: true },
-        { text: ": sintesi, marcatori, temi e progressione temporale." },
+        { text: "Trasformiamo testi, sedute e documenti in dati leggibili", bold: true },
+        { text: ": riassunti, marcatori, pattern, correlazioni." },
       ] satisfies Segment[],
     },
     {
       title: "Workflow integrati",
       text: [
-        { text: "Pensato per la routine clinica reale", bold: true },
-        { text: ", senza cambiare il modo in cui costruisci la relazione terapeutica." },
+        { text: "Strumenti pensati per inserirsi nelle routine cliniche esistenti", bold: true },
+        { text: ", non per sostituirle." },
       ] satisfies Segment[],
     },
     {
       title: "Human-centred",
       text: [
-        { text: "L'AI supporta, non sostituisce", bold: true },
-        { text: ". La decisione resta sempre nel perimetro del professionista." },
+        { text: "L'AI è un motore.", bold: true },
+        { text: " Il giudizio clinico — e la relazione di cura — restano al centro." },
       ] satisfies Segment[],
     },
   ],
@@ -237,50 +171,54 @@ export const audiences = {
     ],
   ] satisfies Segment[][],
   items: [
-    "Psicologi",
-    "Psicoterapeuti",
-    "Equipe di salute mentale",
-    "Cliniche",
     "Ospedali",
+    "Cliniche",
     "Centri di ricerca",
+    "Medici di base",
+    "Psicologi",
+    "Professionisti della salute mentale",
   ],
 };
 
 export const contact = {
   eyebrow: "Contatti",
   title: [
-    [{ text: "Porta Ianua Mind", bold: true }],
-    [{ text: "nel tuo lavoro clinico." }],
+    [{ text: "Apriamo insieme", bold: true }],
+    [{ text: "la prossima " }, { text: "soglia", italic: true }, { text: " della cura." }],
   ] as Segment[][],
   bodySegments: [
-    { text: "Se lavori in " },
+    { text: "Lavori in una " },
+    { text: "struttura sanitaria", bold: true },
+    { text: ", in uno " },
     { text: "studio privato", bold: true },
-    { text: " o coordini un team di " },
-    { text: "professionisti della salute mentale", bold: true },
-    { text: ", raccontaci il tuo contesto: ti risponderemo con una proposta di demo." },
+    { text: " o in un " },
+    { text: "centro di ricerca", bold: true },
+    {
+      text: "? Raccontaci il tuo contesto: torneremo da te entro pochi giorni lavorativi.",
+    },
   ] satisfies Segment[],
   email: "info@ianua.it",
   formPlaceholder: "la tua email professionale",
-  formCta: "richiedi demo",
-  hint: "Ti risponderemo personalmente entro pochi giorni lavorativi.",
+  formCta: "richiedi un contatto",
+  hint: "Ti risponderemo personalmente. Niente newsletter automatiche.",
 };
 
 export const footer = {
-  brandLine: "Ianua Mind — Healthcare technology, human at heart.",
+  brandLine: "Ianua — Healthcare technology, human at heart.",
   columns: [
-    {
-      title: "Prodotto",
-      links: [
-        { label: "Come funziona", href: "#come-funziona" },
-        { label: "Feature", href: "#feature-mind" },
-        { label: "Approccio", href: "#approccio" },
-      ],
-    },
     {
       title: "Ecosistema",
       links: [
         { label: "Ianua Mind", href: "#ecosistema" },
         { label: "Ianua Studio", href: "#ecosistema" },
+        { label: "Ianuacare", href: "#ianuacare" },
+      ],
+    },
+    {
+      title: "Brand",
+      links: [
+        { label: "Approccio", href: "#approccio" },
+        { label: "Per chi lavoriamo", href: "#per-chi" },
       ],
     },
     {

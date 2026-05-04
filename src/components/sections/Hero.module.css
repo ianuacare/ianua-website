@@ -2,9 +2,10 @@
   position: relative;
   isolation: isolate;
   min-height: 100dvh;
-  padding: clamp(1rem, 2.5vw, 2rem) clamp(1.25rem, 5vw, 3rem) clamp(3rem, 7vh, 5rem);
-  display: grid;
-  grid-template-rows: auto 1fr;
+  padding: clamp(3rem, 10vh, 6rem) clamp(1.25rem, 5vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   background-color: var(--bg-color, #0c1f3d);
 }
@@ -31,170 +32,11 @@
   opacity: 0.72;
 }
 
-.topNav {
-  position: relative;
-  z-index: 3;
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 1rem;
-  align-items: center;
-}
-
-.brandLink {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.navWordmark {
-  width: min(28vw, 126px);
-}
-
-.nav {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: clamp(0.45rem, 1.4vw, 1rem);
-  flex-wrap: wrap;
-}
-
-.navLink {
-  color: rgba(255, 255, 255, 0.88);
-  text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 0.74rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.navLink:hover,
-.navLink:focus-visible {
-  color: var(--paper);
-}
-
-.navCta {
-  justify-self: end;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.68rem 1.2rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  text-decoration: none;
-  color: var(--paper);
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.content {
-  position: relative;
-  z-index: 3;
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: clamp(1.8rem, 4vw, 3.4rem);
-  align-items: center;
-}
-
-.copyCol {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.eyebrow {
-  margin: 0;
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  padding: 0.45rem 0.75rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.94);
-}
-
-.title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.2rem, 6.2vw, 4.9rem);
-  line-height: 0.97;
-  letter-spacing: -0.025em;
-  color: var(--paper);
-  display: flex;
-  flex-direction: column;
-}
-
-.titleStrong {
-  font-weight: 500;
-}
-
-.body {
-  margin: 0;
-  max-width: 54ch;
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 1.55vw, 1.15rem);
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.bodyStrong {
-  color: var(--paper);
-  font-weight: 500;
-}
-
-.ctaRow {
-  margin-top: 0.6rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.primaryCta,
-.secondaryCta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  border-radius: 999px;
-  font-family: var(--font-body);
-  font-size: 0.74rem;
-  font-weight: 500;
-  letter-spacing: 0.19em;
-  text-transform: uppercase;
-  padding: 0.84rem 1.35rem;
-}
-
-.primaryCta {
-  background: var(--paper);
-  color: var(--ink);
-}
-
-.secondaryCta {
-  color: var(--paper);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-}
-
 .logoStage {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   transform-origin: 50% 45%;
   will-change: transform, opacity, filter;
-  justify-self: end;
 }
 
 .logoInner {
@@ -202,63 +44,24 @@
 }
 
 .logoWordmark {
-  width: min(78vw, 420px);
+  width: min(88vw, 400px);
 }
 
 @media (max-width: 768px) {
   .hero {
+    /* Prima schermata = intero viewport su mobile (dvh/svh gestiscono UI browser) */
     min-height: 100svh;
     min-height: 100dvh;
     height: 100svh;
     height: 100dvh;
-    padding-left: clamp(1rem, 4.8vw, 2rem);
-    padding-right: clamp(1rem, 4.8vw, 2rem);
+    padding-left: clamp(1.25rem, 5vw, 3rem);
+    padding-right: clamp(1.25rem, 5vw, 3rem);
     padding-top: max(env(safe-area-inset-top, 0px), clamp(2rem, 8vh, 4rem));
     padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(2rem, 8vh, 4rem));
   }
 
-  .topNav {
-    grid-template-columns: 1fr auto;
-    gap: 0.8rem;
-  }
-
-  .nav {
-    grid-column: 1 / -1;
-    justify-content: flex-start;
-    order: 3;
-  }
-
-  .navWordmark {
-    width: min(44vw, 132px);
-  }
-
-  .navCta {
-    padding: 0.58rem 0.9rem;
-    font-size: 0.67rem;
-  }
-
-  .content {
-    grid-template-columns: 1fr;
-    gap: 1.8rem;
-    margin-top: 1rem;
-  }
-
-  .logoStage {
-    justify-self: start;
-  }
-
   .logoWordmark {
-    width: min(56vw, 240px);
-  }
-
-  .ctaRow {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .primaryCta,
-  .secondaryCta {
-    width: 100%;
+    width: min(58vw, 260px);
   }
 }
 
@@ -276,6 +79,19 @@
   to {
     opacity: 1;
   }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

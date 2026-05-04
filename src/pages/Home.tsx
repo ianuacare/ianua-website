@@ -17,7 +17,7 @@ export default function Home() {
       <PageMeta
         title={seoHome.title}
         description={seoHome.description}
-        canonicalPath="/ianua-mind"
+        canonicalPath="/"
       />
       <JsonLdOrganization />
       <a href="#main-content" className={styles.skipLink}>

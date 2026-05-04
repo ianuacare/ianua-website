@@ -12,12 +12,19 @@ import { ecosystemLead, ecosystemTitle, products } from "../../copy/home";
 import { EditorialText } from "../EditorialText";
 import mindWordmark from "../../assets/branding/Ianuamind_bianco.svg";
 import studioWordmark from "../../assets/branding/Ianuastudio_bianco.svg";
+import bgMind from "../../../brand_ianua/Sfondo_sito_webSVG/ianuamind.svg";
+import bgStudio from "../../../brand_ianua/Sfondo_sito_webSVG/ianuastudio.svg";
 import { easeOut } from "./_motion";
 import styles from "./ProductsEcosystem.module.css";
 
 const wordmarks: Record<string, string> = {
   mind: mindWordmark,
   studio: studioWordmark,
+};
+
+const cardBackgrounds: Record<string, string> = {
+  mind: bgMind,
+  studio: bgStudio,
 };
 
 const cardVariants = {
@@ -93,16 +100,17 @@ function ProductCard({
       animate={inView ? "shown" : "hidden"}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      style={
-        reduce
-          ? undefined
+      style={{
+        ["--card-bg-image" as string]: `url(${cardBackgrounds[product.key]})`,
+        ...(reduce
+          ? {}
           : {
               rotateX,
               rotateY,
               transformPerspective: 1200,
               transformStyle: "preserve-3d",
-            }
-      }
+            }),
+      }}
     >
       {!reduce ? (
         <motion.div className={styles.cardGlow} aria-hidden style={{ background: glowBg }} />

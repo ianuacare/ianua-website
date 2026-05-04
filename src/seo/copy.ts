@@ -6,6 +6,12 @@ export const seoHome = {
     "Ianua Mind e Ianua Studio: strumenti per psicologi, ospedali e ricerca clinica. Sedute sicure, insight strutturati con intelligenza artificiale e integrazione della documentazione clinica.",
 } as const;
 
+export const seoIanuaMindLanding = {
+  title: "Ianua Mind — Insight clinici strutturati per psicologi",
+  description:
+    "Ianua Mind aiuta psicologi e professionisti della salute mentale a registrare sedute in sicurezza, ottenere insight strutturati e monitorare l'evoluzione terapeutica nel tempo.",
+} as const;
+
 export const seoComingSoon = {
   title: "Ianua Care — In arrivo",
   description:

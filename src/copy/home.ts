@@ -65,7 +65,7 @@ export const products = [
       "Identificazione di temi ricorrenti nel tempo",
       "Visualizzazione dell'evoluzione del percorso terapeutico",
     ],
-    cta: { label: "Scopri Ianua Mind", href: "#contatti" },
+    cta: { label: "Scopri di più", href: "/ianua-mind" },
   },
   {
     key: "studio",

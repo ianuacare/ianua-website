@@ -28,8 +28,8 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  mix-blend-mode: soft-light;
-  opacity: 0.72;
+  mix-blend-mode: screen;
+  opacity: 0.94;
 }
 
 .logoStage {
@@ -101,6 +101,6 @@
   }
 
   .shaderLayer {
-    opacity: 0.52;
+    opacity: 0.78;
   }
 }

@@ -3,6 +3,7 @@ import { motion, useInView } from "motion/react";
 import { ianuacare } from "../../copy/home";
 import { EditorialText } from "../EditorialText";
 import careWordmark from "../../assets/branding/Ianuacare_bianco.svg";
+import careSectionBg from "../../../brand_ianua/Sfondo_sito_webSVG/ianua_ianuacare.svg";
 import { easeOut } from "./_motion";
 import styles from "./IanuacareCard.module.css";
 
@@ -15,6 +16,7 @@ export function IanuacareCard() {
       <motion.div
         ref={ref}
         className={styles.card}
+        style={{ ["--ianuacare-card-bg" as string]: `url(${careSectionBg})` }}
         initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
         transition={{ duration: 0.85, ease: easeOut }}

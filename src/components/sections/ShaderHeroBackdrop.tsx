@@ -24,30 +24,30 @@ void main() {
   vec2 uv = gl_FragCoord.xy / u_resolution.xy;
   vec2 p = uv - 0.5;
   p.x *= u_resolution.x / u_resolution.y;
-  float t = u_time * 1.75;
+  float t = u_time * 2.35;
 
-  float wave1 = sin((p.x * 7.5) + (t * 1.25)) * 0.12;
-  float wave2 = sin((p.y * 9.5) - (t * 1.05)) * 0.1;
-  float wave3 = sin(((p.x + p.y) * 8.8) + (t * 0.92)) * 0.08;
-  float waveMix = wave1 + wave2 + wave3;
+  float waveA = sin((uv.x * 11.0) + (t * 1.75));
+  float waveB = sin((uv.y * 10.0) - (t * 1.45));
+  float waveC = sin(((uv.x + uv.y) * 8.5) + (t * 1.25));
+  float flow = (waveA * 0.5 + waveB * 0.3 + waveC * 0.2);
 
-  float gradA = uv.y + waveMix;
-  float gradB = uv.x - (wave1 * 0.9) + (wave2 * 0.35);
-  float gradC = (uv.x + uv.y) * 0.5 + (wave3 * 1.1);
+  float band1 = uv.y + flow * 0.17;
+  float band2 = uv.x - waveA * 0.12 + waveB * 0.06;
+  float band3 = (uv.x * 0.55 + uv.y * 0.45) + waveC * 0.11;
 
-  vec3 c0 = vec3(0.03, 0.10, 0.25);
-  vec3 c1 = vec3(0.08, 0.22, 0.44);
-  vec3 c2 = vec3(0.12, 0.34, 0.62);
-  vec3 c3 = vec3(0.48, 0.78, 0.96);
+  vec3 deep = vec3(0.03, 0.10, 0.25);
+  vec3 mid = vec3(0.07, 0.20, 0.40);
+  vec3 glow = vec3(0.12, 0.34, 0.62);
+  vec3 highlight = vec3(0.48, 0.78, 0.96);
 
-  vec3 layerA = mix(c0, c2, smoothstep(-0.1, 1.1, gradA));
-  vec3 layerB = mix(c1, c3, smoothstep(-0.15, 1.15, gradB));
-  vec3 layerC = mix(c0, c3, smoothstep(-0.2, 1.2, gradC));
+  vec3 layer1 = mix(deep, glow, smoothstep(-0.15, 1.1, band1));
+  vec3 layer2 = mix(mid, glow, smoothstep(-0.2, 1.15, band2));
+  vec3 layer3 = mix(deep, highlight, smoothstep(-0.25, 1.2, band3));
 
-  vec3 color = layerA * 0.45 + layerB * 0.35 + layerC * 0.2;
+  vec3 color = layer1 * 0.52 + layer2 * 0.30 + layer3 * 0.18;
 
-  float vignette = smoothstep(1.15, 0.25, length(p));
-  color *= (0.78 + 0.42 * vignette);
+  float centerGlow = smoothstep(1.1, 0.08, length(p));
+  color = mix(color, glow, centerGlow * 0.18);
 
   gl_FragColor = vec4(color, 0.95);
 }
@@ -129,25 +129,20 @@ export function ShaderHeroBackdrop({ className }: ShaderHeroBackdropProps) {
       }
       gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-      if (!reduceMotion) {
-        rafId = window.requestAnimationFrame(draw);
-      }
+      rafId = window.requestAnimationFrame(draw);
     };
 
     const onMotionPrefChange = (event: MediaQueryListEvent) => {
       reduceMotion = event.matches;
-      window.cancelAnimationFrame(rafId);
-      rafId = 0;
-      draw(performance.now());
+      if (reduceMotion) {
+        // Keep motion reduced but still visible as requested.
+        return;
+      }
     };
 
     const onResize = () => draw(performance.now());
 
-    if (!reduceMotion) {
-      rafId = window.requestAnimationFrame(draw);
-    } else {
-      draw(0);
-    }
+    rafId = window.requestAnimationFrame(draw);
 
     media.addEventListener("change", onMotionPrefChange);
     window.addEventListener("resize", onResize);

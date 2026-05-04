@@ -24,9 +24,12 @@
   position: absolute;
   inset: 0;
   z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  mix-blend-mode: soft-light;
-  opacity: 0.75;
+  mix-blend-mode: screen;
+  opacity: 0.92;
 }
 
 .logoStage {
@@ -98,6 +101,6 @@
   }
 
   .shaderLayer {
-    opacity: 0.5;
+    opacity: 0.65;
   }
 }

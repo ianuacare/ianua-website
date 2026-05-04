@@ -21,9 +21,9 @@ uniform vec2 u_resolution;
 uniform float u_time;
 
 float wave(vec2 uv, float t) {
-  float a = sin((uv.x * 5.2) + (t * 0.35));
-  float b = sin((uv.y * 7.8) - (t * 0.27));
-  float c = sin(((uv.x + uv.y) * 6.2) + (t * 0.18));
+  float a = sin((uv.x * 9.2) + (t * 1.05));
+  float b = sin((uv.y * 11.8) - (t * 0.92));
+  float c = sin(((uv.x + uv.y) * 10.6) + (t * 0.88));
   return (a + b + c) / 3.0;
 }
 
@@ -32,19 +32,22 @@ void main() {
   vec2 centered = uv - 0.5;
   centered.x *= u_resolution.x / u_resolution.y;
 
-  float radial = smoothstep(0.95, 0.02, length(centered));
+  float radial = smoothstep(1.05, 0.03, length(centered));
   float motion = wave(uv, u_time);
-  float streak = sin((uv.x * 18.0) + (u_time * 0.55)) * 0.08;
-  float intensity = (motion * 0.5 + 0.5) * radial + streak;
+  float streakA = sin((uv.x * 30.0) + (u_time * 1.35)) * 0.12;
+  float streakB = sin((uv.y * 24.0) - (u_time * 1.18)) * 0.1;
+  float pulse = sin(u_time * 0.85) * 0.08;
+  float intensity = (motion * 0.5 + 0.5) * radial + streakA + streakB + pulse;
 
   vec3 deep = vec3(0.03, 0.10, 0.25);
   vec3 glow = vec3(0.12, 0.34, 0.62);
   vec3 highlight = vec3(0.48, 0.78, 0.96);
 
-  vec3 color = mix(deep, glow, clamp(intensity, 0.0, 1.0));
-  color = mix(color, highlight, pow(clamp(intensity, 0.0, 1.0), 2.8) * 0.45);
+  float clamped = clamp(intensity, 0.0, 1.0);
+  vec3 color = mix(deep, glow, clamped);
+  color = mix(color, highlight, pow(clamped, 2.1) * 0.68);
 
-  gl_FragColor = vec4(color, 0.82);
+  gl_FragColor = vec4(color, 0.95);
 }
 `;
 

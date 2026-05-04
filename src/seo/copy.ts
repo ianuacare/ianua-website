@@ -1,9 +1,9 @@
 /** Meta title / description per route — allineati al contenuto visibile in pagina. */
 
 export const seoHome = {
-  title: "Ianua — Healthcare technology, human at heart",
+  title: "Ianua Mind — Insight clinici strutturati per psicologi",
   description:
-    "Ianua Mind e Ianua Studio: strumenti per psicologi, ospedali e ricerca clinica. Sedute sicure, insight strutturati con intelligenza artificiale e integrazione della documentazione clinica.",
+    "Ianua Mind aiuta psicologi e professionisti della salute mentale a registrare sedute in sicurezza, ottenere insight strutturati e monitorare l'evoluzione terapeutica nel tempo.",
 } as const;
 
 export const seoComingSoon = {

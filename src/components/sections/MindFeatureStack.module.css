@@ -1,0 +1,87 @@
+.section {
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(4rem, 8vw, 6.5rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 860px;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.dash {
+  width: 28px;
+  height: 1px;
+  background: var(--paper);
+}
+
+.title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.8vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.titleStrong {
+  font-weight: 500;
+}
+
+.grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.2vw, 1.4rem);
+}
+
+.card {
+  padding: clamp(1.25rem, 2.5vw, 1.8rem);
+  border-radius: 20px;
+  background:
+    radial-gradient(65% 90% at 0% 0%, rgba(120, 200, 200, 0.2) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.cardTitle {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.3vw, 1.55rem);
+  line-height: 1.2;
+}
+
+.cardBody {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 920px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

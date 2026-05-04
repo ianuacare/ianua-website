@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import logoIanuaSfum from "../../assets/branding/Ianua_sfum.svg";
+import { IanuaLogo } from "../IanuaLogo";
+import { brandBackdropVars } from "../../styles/brandBackdrop";
 import styles from "./Hero.module.css";
+import { ShaderHeroBackdrop } from "./ShaderHeroBackdrop";
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -39,7 +41,9 @@ export function Hero() {
   );
 
   return (
-    <section id="top" ref={sectionRef} className={styles.hero}>
+    <section id="top" ref={sectionRef} className={styles.hero} style={brandBackdropVars}>
+      <div className={styles.brandBackdrop} aria-hidden />
+      <ShaderHeroBackdrop className={styles.shaderLayer} />
       <h1 className={styles.srOnly}>Ianua</h1>
       <motion.div
         className={styles.logoStage}
@@ -51,15 +55,7 @@ export function Hero() {
         }}
       >
         <div className={styles.logoInner}>
-          <img
-            src={logoIanuaSfum}
-            alt=""
-            className={styles.logoImg}
-            width={400}
-            height={141}
-            decoding="async"
-            draggable={false}
-          />
+          <IanuaLogo tone="paper" interactive={false} className={styles.logoWordmark} />
         </div>
       </motion.div>
     </section>

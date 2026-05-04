@@ -12,7 +12,7 @@
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-color: #0c1f3d;
+  background-color: var(--bg-color, #0c1f3d);
   background-image: var(--bg-mobile);
   background-size: cover;
   background-position: center;

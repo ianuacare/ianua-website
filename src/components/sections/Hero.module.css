@@ -7,10 +7,31 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(ellipse 85% 55% at 50% 42%, var(--paper-soft) 0%, var(--paper) 72%);
+  background-color: var(--bg-color, #0c1f3d);
+}
+
+.brandBackdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--bg-mobile);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.shaderLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  opacity: 0.75;
 }
 
 .logoStage {
+  position: relative;
+  z-index: 2;
   transform-origin: 50% 45%;
   will-change: transform, opacity, filter;
 }
@@ -19,12 +40,8 @@
   animation: logoFadeIn 1s var(--ease-out) both;
 }
 
-.logoImg {
-  display: block;
+.logoWordmark {
   width: min(88vw, 400px);
-  height: auto;
-  max-width: 100%;
-  user-select: none;
 }
 
 @media (max-width: 768px) {
@@ -40,8 +57,14 @@
     padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(2rem, 8vh, 4rem));
   }
 
-  .logoImg {
+  .logoWordmark {
     width: min(58vw, 260px);
+  }
+}
+
+@media (min-width: 768px) {
+  .brandBackdrop {
+    background-image: var(--bg-desktop);
   }
 }
 
@@ -72,5 +95,9 @@
   .logoInner {
     animation: none;
     opacity: 1;
+  }
+
+  .shaderLayer {
+    opacity: 0.5;
   }
 }

@@ -24,21 +24,21 @@ void main() {
   vec2 uv = gl_FragCoord.xy / u_resolution.xy;
   vec2 p = uv - 0.5;
   p.x *= u_resolution.x / u_resolution.y;
-  float t = u_time;
+  float t = u_time * 1.75;
 
-  float wave1 = sin((p.x * 7.0) + (t * 1.1)) * 0.12;
-  float wave2 = sin((p.y * 9.0) - (t * 0.9)) * 0.1;
-  float wave3 = sin(((p.x + p.y) * 8.5) + (t * 0.7)) * 0.08;
+  float wave1 = sin((p.x * 7.5) + (t * 1.25)) * 0.12;
+  float wave2 = sin((p.y * 9.5) - (t * 1.05)) * 0.1;
+  float wave3 = sin(((p.x + p.y) * 8.8) + (t * 0.92)) * 0.08;
   float waveMix = wave1 + wave2 + wave3;
 
   float gradA = uv.y + waveMix;
   float gradB = uv.x - (wave1 * 0.9) + (wave2 * 0.35);
   float gradC = (uv.x + uv.y) * 0.5 + (wave3 * 1.1);
 
-  vec3 c0 = vec3(0.03, 0.09, 0.23);
-  vec3 c1 = vec3(0.07, 0.24, 0.52);
-  vec3 c2 = vec3(0.20, 0.47, 0.76);
-  vec3 c3 = vec3(0.56, 0.84, 0.98);
+  vec3 c0 = vec3(0.03, 0.10, 0.25);
+  vec3 c1 = vec3(0.08, 0.22, 0.44);
+  vec3 c2 = vec3(0.12, 0.34, 0.62);
+  vec3 c3 = vec3(0.48, 0.78, 0.96);
 
   vec3 layerA = mix(c0, c2, smoothstep(-0.1, 1.1, gradA));
   vec3 layerB = mix(c1, c3, smoothstep(-0.15, 1.15, gradB));

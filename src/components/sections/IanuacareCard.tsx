@@ -16,7 +16,6 @@ export function IanuacareCard() {
       <motion.div
         ref={ref}
         className={styles.card}
-        style={{ ["--ianuacare-card-bg" as string]: `url(${careSectionBg})` }}
         initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
         transition={{ duration: 0.85, ease: easeOut }}
@@ -49,7 +48,11 @@ export function IanuacareCard() {
           </a>
         </div>
 
-        <div className={styles.right} aria-hidden>
+        <div
+          className={styles.right}
+          style={{ ["--ianuacare-inner-bg" as string]: `url(${careSectionBg})` }}
+          aria-hidden
+        >
           <div className={styles.wordmarkBlock}>
             <img src={careWordmark} alt="" aria-hidden className={styles.wordmark} />
             <p className={styles.tagSmall}>(progetto editoriale di Ianua)</p>

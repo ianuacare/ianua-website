@@ -20,32 +20,34 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform float u_time;
 
-float wave(vec2 uv, float t) {
-  float a = sin((uv.x * 9.2) + (t * 1.05));
-  float b = sin((uv.y * 11.8) - (t * 0.92));
-  float c = sin(((uv.x + uv.y) * 10.6) + (t * 0.88));
-  return (a + b + c) / 3.0;
-}
-
 void main() {
   vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-  vec2 centered = uv - 0.5;
-  centered.x *= u_resolution.x / u_resolution.y;
+  vec2 p = uv - 0.5;
+  p.x *= u_resolution.x / u_resolution.y;
+  float t = u_time;
 
-  float radial = smoothstep(1.05, 0.03, length(centered));
-  float motion = wave(uv, u_time);
-  float streakA = sin((uv.x * 30.0) + (u_time * 1.35)) * 0.12;
-  float streakB = sin((uv.y * 24.0) - (u_time * 1.18)) * 0.1;
-  float pulse = sin(u_time * 0.85) * 0.08;
-  float intensity = (motion * 0.5 + 0.5) * radial + streakA + streakB + pulse;
+  float wave1 = sin((p.x * 7.0) + (t * 1.1)) * 0.12;
+  float wave2 = sin((p.y * 9.0) - (t * 0.9)) * 0.1;
+  float wave3 = sin(((p.x + p.y) * 8.5) + (t * 0.7)) * 0.08;
+  float waveMix = wave1 + wave2 + wave3;
 
-  vec3 deep = vec3(0.03, 0.10, 0.25);
-  vec3 glow = vec3(0.12, 0.34, 0.62);
-  vec3 highlight = vec3(0.48, 0.78, 0.96);
+  float gradA = uv.y + waveMix;
+  float gradB = uv.x - (wave1 * 0.9) + (wave2 * 0.35);
+  float gradC = (uv.x + uv.y) * 0.5 + (wave3 * 1.1);
 
-  float clamped = clamp(intensity, 0.0, 1.0);
-  vec3 color = mix(deep, glow, clamped);
-  color = mix(color, highlight, pow(clamped, 2.1) * 0.68);
+  vec3 c0 = vec3(0.03, 0.09, 0.23);
+  vec3 c1 = vec3(0.07, 0.24, 0.52);
+  vec3 c2 = vec3(0.20, 0.47, 0.76);
+  vec3 c3 = vec3(0.56, 0.84, 0.98);
+
+  vec3 layerA = mix(c0, c2, smoothstep(-0.1, 1.1, gradA));
+  vec3 layerB = mix(c1, c3, smoothstep(-0.15, 1.15, gradB));
+  vec3 layerC = mix(c0, c3, smoothstep(-0.2, 1.2, gradC));
+
+  vec3 color = layerA * 0.45 + layerB * 0.35 + layerC * 0.2;
+
+  float vignette = smoothstep(1.15, 0.25, length(p));
+  color *= (0.78 + 0.42 * vignette);
 
   gl_FragColor = vec4(color, 0.95);
 }

@@ -24,12 +24,12 @@ void main() {
   vec2 uv = gl_FragCoord.xy / u_resolution.xy;
   vec2 p = uv - 0.5;
   p.x *= u_resolution.x / u_resolution.y;
-  float t = u_time * 3.8;
+  float t = u_time * 2.9;
 
-  float waveA = sin((uv.x * 14.0) + (t * 2.45));
-  float waveB = sin((uv.y * 12.0) - (t * 2.1));
-  float waveC = sin(((uv.x + uv.y) * 11.5) + (t * 1.95));
-  float waveD = sin(((uv.x - uv.y) * 16.0) - (t * 2.6));
+  float waveA = sin((uv.x * 7.8) + (t * 2.15));
+  float waveB = sin((uv.y * 6.9) - (t * 1.85));
+  float waveC = sin(((uv.x + uv.y) * 6.4) + (t * 1.7));
+  float waveD = sin(((uv.x - uv.y) * 8.6) - (t * 2.25));
   float flow = (waveA * 0.36 + waveB * 0.24 + waveC * 0.2 + waveD * 0.2);
 
   float band1 = uv.y + flow * 0.35;

@@ -46,9 +46,9 @@
 }
 
 .suffix {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--ink-soft);
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ink);
 }
 
 .label {

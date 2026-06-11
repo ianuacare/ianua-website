@@ -1,14 +1,18 @@
 import { IanuaMindHero } from "../components/sections/IanuaMindHero";
-import { MindPainPoints } from "../components/sections/MindPainPoints";
-import { HowItWorks } from "../components/sections/HowItWorks";
-import { MindFeatureStack } from "../components/sections/MindFeatureStack";
-import { ContactBand } from "../components/sections/ContactBand";
-import { SiteFooter } from "../components/sections/SiteFooter";
+import { MindContact } from "../components/sections/MindContact";
+import { MindFaq } from "../components/sections/MindFaq";
+import { MindFeatureVideos } from "../components/sections/MindFeatureVideos";
+import { MindFooter } from "../components/sections/MindFooter";
+import { MindPricing } from "../components/sections/MindPricing";
+import { MindTestimonials } from "../components/sections/MindTestimonials";
 import { JsonLdOrganization } from "../components/seo/JsonLdOrganization";
 import { PageMeta } from "../components/seo/PageMeta";
 import { seoIanuaMindLanding } from "../seo/copy";
-import styles from "./Home.module.css";
+import styles from "./IanuaMindLanding.module.css";
 
+/**
+ * Landing page prodotto Ianua Mind — layout flat viola con hero, funzionalità, prezzi, FAQ, recensioni e contatti.
+ */
 export default function IanuaMindLanding() {
   return (
     <div className={styles.page}>
@@ -23,11 +27,12 @@ export default function IanuaMindLanding() {
       </a>
       <main id="main-content" tabIndex={-1}>
         <IanuaMindHero />
-        <MindPainPoints />
-        <HowItWorks />
-        <MindFeatureStack />
-        <ContactBand />
-        <SiteFooter />
+        <MindFeatureVideos />
+        <MindPricing />
+        <MindFaq />
+        <MindTestimonials />
+        <MindContact />
+        <MindFooter />
       </main>
     </div>
   );

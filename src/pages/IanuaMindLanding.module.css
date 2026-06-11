@@ -1,0 +1,41 @@
+.page {
+  min-height: 100dvh;
+  background: var(--mind-bg, #ffffff);
+  color: var(--mind-text, #1e1b4b);
+  --mind-primary: #5a4e93;
+  --mind-primary-hover: #484080;
+  --mind-primary-soft: #f3f2f7;
+  --mind-primary-muted: #e8e6f0;
+  --mind-border: #d5d2e0;
+  --mind-text: #1e1b4b;
+  --mind-muted: #64748b;
+  --mind-surface: #fafafa;
+  --mind-radius: 16px;
+  --mind-radius-lg: 24px;
+}
+
+.skipLink {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--mind-primary);
+  color: #fff;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 0.3s var(--ease-out);
+  z-index: 100;
+}
+
+.skipLink:focus,
+.skipLink:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--mind-primary);
+  outline-offset: 3px;
+}

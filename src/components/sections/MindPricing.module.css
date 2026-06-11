@@ -1,0 +1,238 @@
+.section {
+  padding: clamp(3.5rem, 8vw, 5.5rem) clamp(1.25rem, 4vw, 3rem);
+  background: #fff;
+  scroll-margin-top: 80px;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mind-primary);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--mind-text);
+}
+
+.subtitle {
+  margin: 0.75rem auto 0;
+  max-width: 52ch;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--mind-muted);
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.75rem 1.5rem;
+  background: #fff;
+  border: 1px solid var(--mind-border);
+  border-radius: var(--mind-radius-lg);
+}
+
+.highlighted {
+  border-color: var(--mind-primary);
+  border-width: 2px;
+  background: var(--mind-primary-soft);
+}
+
+.badge {
+  position: absolute;
+  top: -0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.3rem 0.85rem;
+  background: var(--mind-primary);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.planName {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--mind-text);
+}
+
+.price {
+  margin: 0;
+}
+
+.amount {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--mind-text);
+}
+
+.billing {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--mind-muted);
+}
+
+.equivalent {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--mind-muted);
+}
+
+.equivalent strong {
+  color: var(--mind-primary);
+  font-weight: 500;
+}
+
+.savings {
+  margin: 0.35rem 0 1rem;
+  padding: 0.65rem 0.75rem;
+  background: var(--mind-primary-soft);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--mind-text);
+  flex: 1;
+}
+
+.savings strong {
+  color: var(--mind-primary);
+  font-weight: 500;
+}
+
+.savingsMuted {
+  margin: 0.35rem 0 1rem;
+  font-size: 0.82rem;
+  color: var(--mind-muted);
+  flex: 1;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.ctaPrimary {
+  background: var(--mind-primary);
+  color: #fff;
+}
+
+.ctaPrimary:hover,
+.ctaPrimary:focus-visible {
+  background: var(--mind-primary-hover);
+  outline: none;
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: var(--mind-primary);
+  border: 1.5px solid var(--mind-primary);
+}
+
+.ctaSecondary:hover,
+.ctaSecondary:focus-visible {
+  background: var(--mind-primary-soft);
+  outline: none;
+}
+
+.featuresBlock {
+  margin-top: 2.5rem;
+  padding: 1.75rem 1.5rem;
+  background: var(--mind-surface);
+  border: 1px solid var(--mind-border);
+  border-radius: var(--mind-radius-lg);
+}
+
+.featuresTitle {
+  margin: 0 0 1.25rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--mind-text);
+}
+
+.features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem 1.25rem;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--mind-text);
+}
+
+.check {
+  flex-shrink: 0;
+  color: var(--mind-primary);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .highlighted {
+    order: -1;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+}

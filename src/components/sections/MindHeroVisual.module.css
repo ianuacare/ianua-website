@@ -1,0 +1,22 @@
+.wrap {
+  width: 100%;
+  max-width: min(100%, 700px);
+  justify-self: end;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--mind-radius-lg);
+  border: 1px solid var(--mind-border);
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    justify-self: center;
+    max-width: 100%;
+  }
+}

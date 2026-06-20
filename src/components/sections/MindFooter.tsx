@@ -27,7 +27,7 @@ export function MindFooter() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.brandCol}>
-          <IanuaMindWordmark className={styles.wordmark} />
+          <IanuaMindWordmark tone="light" />
           <p className={styles.tagline}>{mindFooter.tagline}</p>
         </div>
 

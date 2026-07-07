@@ -13,12 +13,10 @@ export const ianuaMindHero = {
   subtitle:
     "Un'interfaccia chiara e rapida, pensata per il lavoro quotidiano del professionista.",
   socialProof: {
-    count: "1.200+",
-    text: "psicologi ci hanno scelto per migliorare diagnosi e gestione clinica.",
-    avatars: ["FR", "ML", "AS"],
+    text: "Pensato per semplificare il lavoro clinico quotidiano, senza compromettere la qualità della cura.",
   },
   trustBadge: "Dati crittografati e conformità GDPR",
-  primaryCta: { label: "Prova gratis 14 giorni", href: "#contatti" },
+  primaryCta: { label: "Prova gratuitamente", href: "#contatti" },
   secondaryCta: { label: "Prenota una demo", href: "#contatti" },
 };
 
@@ -132,22 +130,22 @@ export const mindPricing = {
     {
       id: "trimestrale",
       name: "Trimestrale",
-      price: 209,
+      price: 210,
       billingCycle: "fatturato ogni 3 mesi",
-      monthlyEquivalent: 69.67,
-      savingsEuro: 88,
-      savingsPercent: 30,
-      badge: "Risparmia il 30%",
+      monthlyEquivalent: 70,
+      savingsEuro: 87,
+      savingsPercent: 29,
+      badge: "Risparmia il 29%",
       cta: { label: "Inizia gratis", href: "#contatti" },
     },
     {
       id: "annuale",
       name: "Annuale",
-      price: 509,
+      price: 600,
       billingCycle: "fatturato ogni anno",
-      monthlyEquivalent: 42.42,
-      savingsEuro: 679,
-      savingsPercent: 57,
+      monthlyEquivalent: 50,
+      savingsEuro: 588,
+      savingsPercent: 50,
       highlighted: true,
       badge: "Miglior risparmio",
       cta: { label: "Inizia gratis", href: "#contatti" },
@@ -176,7 +174,7 @@ export const mindFaq = {
       id: "prova",
       question: "Come funziona la prova gratuita?",
       answer:
-        "Hai 14 giorni per provare tutte le funzionalità senza carta di credito. Al termine puoi scegliere un piano o interrompere senza costi.",
+        "Puoi provare gratuitamente tutte le funzionalità senza carta di credito. Al termine puoi scegliere un piano o interrompere senza costi.",
     },
     {
       id: "sicurezza",
@@ -193,47 +191,11 @@ export const mindFaq = {
   ] satisfies MindFaqItem[],
 };
 
-export type MindTestimonial = {
-  id: string;
-  quote: string;
-  name: string;
-  role: string;
-  location: string;
-  initials: string;
-};
 
 export const mindTestimonials = {
-  eyebrow: "Cosa dicono gli psicologi",
+  eyebrow: "Dal mondo clinico",
   title: "Recensioni dai professionisti",
-  items: [
-    {
-      id: "francesca",
-      quote:
-        "Finalmente una dashboard che mi fa risparmiare tempo dopo ogni seduta. I riassunti automatici sono precisi e mi aiutano a preparare il colloquio successivo.",
-      name: "Dott.ssa Francesca R.",
-      role: "Psicologa",
-      location: "Milano",
-      initials: "FR",
-    },
-    {
-      id: "marco",
-      quote:
-        "La visualizzazione dell'evoluzione del percorso mi ha cambiato il modo di fare supervisione. Vedo subito i temi ricorrenti e i marcatori emotivi.",
-      name: "Dott. Marco L.",
-      role: "Psicoterapeuta",
-      location: "Roma",
-      initials: "ML",
-    },
-    {
-      id: "anna",
-      quote:
-        "Uso ianua-mind ogni giorno in studio. L'anamnesi semi-automatica e il genogramma mi fanno guadagnare ore ogni settimana.",
-      name: "Dott.ssa Anna S.",
-      role: "Psicologa clinica",
-      location: "Torino",
-      initials: "AS",
-    },
-  ] satisfies MindTestimonial[],
+  comingSoon: "Coming soon",
 };
 
 export const mindContact = {
@@ -241,7 +203,7 @@ export const mindContact = {
   title: "Parlaci delle tue esigenze",
   body: "Compila il modulo o contattaci direttamente. Ti risponderemo entro un giorno lavorativo.",
   email: "ianuacare@gmail.com",
-  phone: "+39 02 1234 5678",
+  phone: "+39 366 139 7864",
   form: {
     nameLabel: "Nome e cognome",
     namePlaceholder: "Mario Rossi",

@@ -27,35 +27,14 @@ export function MindTestimonials() {
           </h2>
         </header>
 
-        <ul className={styles.grid}>
-          {mindTestimonials.items.map((item, index) => (
-            <motion.li
-              key={item.id}
-              className={styles.card}
-              initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
-              transition={{ duration: 0.5, delay: reduceMotion ? 0 : index * 0.08, ease: easeOut }}
-            >
-              <div className={styles.stars} aria-label="Valutazione 5 su 5">
-                {"★★★★★"}
-              </div>
-              <blockquote className={styles.quote}>
-                <p>{item.quote}</p>
-              </blockquote>
-              <footer className={styles.author}>
-                <span className={styles.avatar} aria-hidden>
-                  {item.initials}
-                </span>
-                <div>
-                  <cite className={styles.name}>{item.name}</cite>
-                  <p className={styles.meta}>
-                    {item.role}, {item.location}
-                  </p>
-                </div>
-              </footer>
-            </motion.li>
-          ))}
-        </ul>
+        <motion.div
+          className={styles.comingSoon}
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+          transition={{ duration: 0.5, ease: easeOut }}
+        >
+          <p>{mindTestimonials.comingSoon}</p>
+        </motion.div>
       </div>
     </section>
   );

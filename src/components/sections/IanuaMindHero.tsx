@@ -39,19 +39,7 @@ export function IanuaMindHero() {
             </a>
           </div>
 
-          <div className={styles.socialProof}>
-            <div className={styles.avatars} aria-hidden>
-              {ianuaMindHero.socialProof.avatars.map((initials) => (
-                <span key={initials} className={styles.avatar}>
-                  {initials}
-                </span>
-              ))}
-            </div>
-            <p className={styles.socialText}>
-              <strong>{ianuaMindHero.socialProof.count}</strong>{" "}
-              {ianuaMindHero.socialProof.text}
-            </p>
-          </div>
+          <p className={styles.socialProof}>{ianuaMindHero.socialProof.text}</p>
 
           <p className={styles.trustBadge}>
             <span className={styles.shield} aria-hidden>

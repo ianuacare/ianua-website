@@ -22,6 +22,24 @@ export function isEmailJsConfigured(): boolean {
   );
 }
 
+function contactTitle(source: string): string {
+  switch (source) {
+    case "home":
+      return "Home — richiesta contatto";
+    case "ianua-mind":
+      return "Ianua Mind — richiesta contatto";
+    default:
+      return "Richiesta contatto dal sito";
+  }
+}
+
+function contactTimestamp(): string {
+  return new Date().toLocaleString("it-IT", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
+}
+
 export async function sendContactEmail(payload: ContactFormPayload): Promise<void> {
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY?.trim();
   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID?.trim();
@@ -36,14 +54,20 @@ export async function sendContactEmail(payload: ContactFormPayload): Promise<voi
     throw new Error("Indirizzo email non valido.");
   }
 
+  const name = payload.name?.trim() || "Visitatore del sito";
+  const message = payload.message?.trim() || "—";
+  const source = payload.source?.trim() || "sito";
+
   const result = await emailjs.send(
     serviceId,
     templateId,
     {
-      from_email: email,
-      from_name: payload.name?.trim() || "—",
-      message: payload.message?.trim() || "—",
-      source: payload.source?.trim() || "sito",
+      email,
+      name,
+      message,
+      title: contactTitle(source),
+      time: contactTimestamp(),
+      source,
     },
     { publicKey },
   );

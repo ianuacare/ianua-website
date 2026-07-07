@@ -1,18 +1,10 @@
 import emailjs from "@emailjs/browser";
+import {
+  buildContactTemplateParams,
+  type ContactFormPayload,
+} from "../../lib/contact-email";
 
-const EMAIL_MAX = 254;
-
-export type ContactFormPayload = {
-  email: string;
-  name?: string;
-  message?: string;
-  source?: string;
-};
-
-function isValidEmail(email: string): boolean {
-  if (email.length > EMAIL_MAX) return false;
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+export type { ContactFormPayload };
 
 export function isEmailJsConfigured(): boolean {
   return Boolean(
@@ -22,25 +14,31 @@ export function isEmailJsConfigured(): boolean {
   );
 }
 
-function contactTitle(source: string): string {
-  switch (source) {
-    case "home":
-      return "Home — richiesta contatto";
-    case "ianua-mind":
-      return "Ianua Mind — richiesta contatto";
-    default:
-      return "Richiesta contatto dal sito";
+async function sendViaApi(payload: ContactFormPayload): Promise<boolean> {
+  try {
+    const response = await fetch("/api/send-contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.status === 404) return false;
+
+    if (!response.ok) {
+      const body = (await response.json().catch(() => null)) as { error?: string } | null;
+      throw new Error(body?.error ?? "Impossibile inviare la richiesta.");
+    }
+
+    return true;
+  } catch (error) {
+    if (error instanceof Error && error.message !== "Failed to fetch") {
+      throw error;
+    }
+    return false;
   }
 }
 
-function contactTimestamp(): string {
-  return new Date().toLocaleString("it-IT", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
-}
-
-export async function sendContactEmail(payload: ContactFormPayload): Promise<void> {
+async function sendViaBrowser(payload: ContactFormPayload): Promise<void> {
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY?.trim();
   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID?.trim();
   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID?.trim();
@@ -49,30 +47,23 @@ export async function sendContactEmail(payload: ContactFormPayload): Promise<voi
     throw new Error("EmailJS non configurato.");
   }
 
-  const email = payload.email.trim();
-  if (!email || !isValidEmail(email)) {
-    throw new Error("Indirizzo email non valido.");
+  const templateParams = buildContactTemplateParams(payload);
+  if ("error" in templateParams) {
+    throw new Error(templateParams.error);
   }
 
-  const name = payload.name?.trim() || "Visitatore del sito";
-  const message = payload.message?.trim() || "—";
-  const source = payload.source?.trim() || "sito";
-
-  const result = await emailjs.send(
-    serviceId,
-    templateId,
-    {
-      email,
-      name,
-      message,
-      title: contactTitle(source),
-      time: contactTimestamp(),
-      source,
-    },
-    { publicKey },
-  );
+  const result = await emailjs.send(serviceId, templateId, templateParams, {
+    publicKey,
+  });
 
   if (result.status !== 200) {
     throw new Error("Impossibile inviare la richiesta.");
   }
+}
+
+export async function sendContactEmail(payload: ContactFormPayload): Promise<void> {
+  const sentViaApi = await sendViaApi(payload);
+  if (sentViaApi) return;
+
+  await sendViaBrowser(payload);
 }

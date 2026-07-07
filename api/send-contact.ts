@@ -52,7 +52,9 @@ function readEmailJsConfig():
   const templateId = (
     process.env.EMAILJS_TEMPLATE_ID ?? process.env.VITE_EMAILJS_TEMPLATE_ID
   )?.trim();
-  const privateKey = process.env.EMAILJS_PRIVATE_KEY?.trim();
+  const privateKey = (
+    process.env.EMAILJS_PRIVATE_KEY ?? process.env.VITE_EMAILJS_PRIVATE_KEY
+  )?.trim();
 
   if (!publicKey || !serviceId || !templateId) return null;
   return { publicKey, serviceId, templateId, privateKey };
@@ -168,7 +170,16 @@ export default async function handler(
     const text = await response.text();
     if (!response.ok) {
       console.error("EmailJS API error:", response.status, text);
-      res.status(502).json({ error: "Impossibile inviare la richiesta." });
+      res.status(502).json({
+        error: "Impossibile inviare la richiesta.",
+        detail: text.slice(0, 300) || `EmailJS HTTP ${response.status}`,
+        hint:
+          response.status === 403
+            ? "Abilita «Allow EmailJS API for non-browser applications» in EmailJS → Account → Security e aggiungi EMAILJS_PRIVATE_KEY su Vercel."
+            : !config.privateKey
+              ? "Aggiungi EMAILJS_PRIVATE_KEY (Private Key) su Vercel."
+              : undefined,
+      });
       return;
     }
 

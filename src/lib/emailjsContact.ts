@@ -23,17 +23,10 @@ async function sendViaApi(payload: ContactFormPayload): Promise<boolean> {
     });
 
     if (response.status === 404) return false;
-
-    if (!response.ok) {
-      const body = (await response.json().catch(() => null)) as { error?: string } | null;
-      throw new Error(body?.error ?? "Impossibile inviare la richiesta.");
-    }
+    if (!response.ok) return false;
 
     return true;
-  } catch (error) {
-    if (error instanceof Error && error.message !== "Failed to fetch") {
-      throw error;
-    }
+  } catch {
     return false;
   }
 }

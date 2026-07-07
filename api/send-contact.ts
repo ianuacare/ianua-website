@@ -1,19 +1,23 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import {
-  buildContactTemplateParams,
-  type ContactFormPayload,
-} from "../lib/contact-email";
 
 const EMAILJS_API = "https://api.emailjs.com/api/v1.0/email/send";
+const EMAIL_MAX = 254;
+
+type ContactFormPayload = {
+  email: string;
+  name?: string;
+  message?: string;
+  source?: string;
+};
 
 function isAllowedHost(hostname: string): boolean {
   if (hostname === "localhost" || hostname === "127.0.0.1") return true;
   if (hostname.endsWith(".vercel.app")) return true;
-  return (
-    hostname === "ianua.it" ||
-    hostname === "www.ianua.it" ||
-    hostname.endsWith(".ianua.it")
-  );
+  if (hostname === "ianuacare.it" || hostname === "www.ianuacare.it") return true;
+  if (hostname.endsWith(".ianuacare.it")) return true;
+  if (hostname === "ianua.it" || hostname === "www.ianua.it") return true;
+  if (hostname.endsWith(".ianua.it")) return true;
+  return false;
 }
 
 function isAllowedOrigin(req: VercelRequest): boolean {
@@ -52,6 +56,45 @@ function readEmailJsConfig():
 
   if (!publicKey || !serviceId || !templateId) return null;
   return { publicKey, serviceId, templateId, privateKey };
+}
+
+function isValidContactEmail(email: string): boolean {
+  if (email.length > EMAIL_MAX) return false;
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function contactTitle(source: string): string {
+  switch (source) {
+    case "home":
+      return "Home — richiesta contatto";
+    case "ianua-mind":
+      return "Ianua Mind — richiesta contatto";
+    default:
+      return "Richiesta contatto dal sito";
+  }
+}
+
+function buildTemplateParams(payload: ContactFormPayload):
+  | Record<string, string>
+  | { error: string } {
+  const email = payload.email.trim();
+  if (!email || !isValidContactEmail(email)) {
+    return { error: "Indirizzo email non valido." };
+  }
+
+  const source = payload.source?.trim() || "sito";
+
+  return {
+    email,
+    name: payload.name?.trim() || "Visitatore del sito",
+    message: payload.message?.trim() || "—",
+    title: contactTitle(source),
+    time: new Date().toLocaleString("it-IT", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }),
+    source,
+  };
 }
 
 function parseBody(req: VercelRequest): ContactFormPayload | null {
@@ -98,7 +141,7 @@ export default async function handler(
     return;
   }
 
-  const templateParams = buildContactTemplateParams(payload);
+  const templateParams = buildTemplateParams(payload);
   if ("error" in templateParams) {
     res.status(400).json({ error: templateParams.error });
     return;

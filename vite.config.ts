@@ -44,12 +44,12 @@ Sitemap: ${siteOrigin}/sitemap.xml
  * Per GitHub Pages (progetto in sottopath): `vite build --base /ianua-website/`
  * oppure variabile `BASE_URL` gestita dal CLI Vite.
  *
- * `VITE_SITE_URL`: origine pubblica (es. https://www.ianua.it) per robots.txt e sitemap.xml in dist.
+ * `VITE_SITE_URL`: origine pubblica (es. https://www.ianuacare.it) per robots.txt e sitemap.xml in dist.
  */
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const siteOrigin =
-    env.VITE_SITE_URL?.trim().replace(/\/+$/, "") || "https://www.ianua.it";
+    env.VITE_SITE_URL?.trim().replace(/\/+$/, "") || "https://www.ianuacare.it";
 
   return {
     plugins: [react(), writeSeoFiles(siteOrigin)],

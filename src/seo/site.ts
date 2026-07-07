@@ -2,7 +2,7 @@
 export function getSiteOrigin(): string {
   const raw = import.meta.env.VITE_SITE_URL as string | undefined;
   const trimmed = raw?.trim().replace(/\/+$/, "");
-  return trimmed || "https://www.ianua.it";
+  return trimmed || "https://www.ianuacare.it";
 }
 
 /** URL assoluta per una path applicativa (`/` o `/coming-soon`). */

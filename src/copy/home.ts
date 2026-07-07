@@ -197,7 +197,7 @@ export const contact = {
       text: "? Raccontaci il tuo contesto: torneremo da te entro pochi giorni lavorativi.",
     },
   ] satisfies Segment[],
-  email: "info@ianua.it",
+  email: "ianuacare@gmail.com",
   formPlaceholder: "la tua email professionale",
   formCta: "richiedi un contatto",
   hint: "Ti risponderemo personalmente. Niente newsletter automatiche.",
@@ -224,7 +224,7 @@ export const footer = {
     {
       title: "Contatti",
       links: [
-        { label: "info@ianua.it", href: "mailto:info@ianua.it" },
+        { label: "ianuacare@gmail.com", href: "mailto:ianuacare@gmail.com" },
         { label: "Coming soon", href: "/coming-soon" },
       ],
     },

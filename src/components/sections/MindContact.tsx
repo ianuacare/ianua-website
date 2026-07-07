@@ -2,13 +2,11 @@ import type { FormEvent } from "react";
 import { useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { mindContact } from "../../copy/ianuaMindLanding";
+import { sendContactEmail } from "../../lib/emailjsContact";
 import { easeOut } from "./_motion";
 import styles from "./MindContact.module.css";
 
 type SubmitStatus = "idle" | "loading" | "success" | "error";
-
-const contactEndpoint =
-  import.meta.env.VITE_CONTACT_API_URL?.trim() || "/api/send-contact";
 
 /**
  * Sezione contatti con modulo per la landing Ianua Mind.
@@ -30,29 +28,12 @@ export function MindContact() {
 
     setSubmitStatus("loading");
     try {
-      const res = await fetch(contactEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: trimmedEmail,
-          name: name.trim(),
-          message: message.trim(),
-          source: "ianua-mind-landing",
-        }),
+      await sendContactEmail({
+        email: trimmedEmail,
+        name: name.trim(),
+        message: message.trim(),
+        source: "ianua-mind",
       });
-
-      let apiError = "";
-      try {
-        const data = (await res.json()) as { error?: string };
-        if (typeof data?.error === "string") apiError = data.error;
-      } catch {
-        /* risposta non JSON */
-      }
-
-      if (!res.ok) {
-        throw new Error(apiError || `HTTP ${res.status}`);
-      }
-
       setSubmitStatus("success");
       setName("");
       setEmail("");

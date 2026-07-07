@@ -240,7 +240,7 @@ export const mindContact = {
   eyebrow: "Siamo qui per te",
   title: "Parlaci delle tue esigenze",
   body: "Compila il modulo o contattaci direttamente. Ti risponderemo entro un giorno lavorativo.",
-  email: "info@ianua.it",
+  email: "ianuacare@gmail.com",
   phone: "+39 02 1234 5678",
   form: {
     nameLabel: "Nome e cognome",
@@ -254,7 +254,7 @@ export const mindContact = {
     success:
       "Grazie. Abbiamo registrato la richiesta e ti ricontatteremo presto.",
     error:
-      "Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure scrivici a info@ianua.it.",
+      "Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure scrivici a ianuacare@gmail.com.",
     loading: "Invio in corso…",
   },
 };

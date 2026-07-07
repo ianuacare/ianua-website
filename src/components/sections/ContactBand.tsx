@@ -2,14 +2,12 @@ import type { FormEvent } from "react";
 import { useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { contact } from "../../copy/home";
+import { sendContactEmail } from "../../lib/emailjsContact";
 import { EditorialText } from "../EditorialText";
 import { easeOut } from "./_motion";
 import styles from "./ContactBand.module.css";
 
 type SubmitStatus = "idle" | "loading" | "success" | "error";
-
-const contactEndpoint =
-  import.meta.env.VITE_CONTACT_API_URL?.trim() || "/api/send-contact";
 
 export function ContactBand() {
   const ref = useRef<HTMLElement>(null);
@@ -24,24 +22,10 @@ export function ContactBand() {
 
     setSubmitStatus("loading");
     try {
-      const res = await fetch(contactEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmed }),
+      await sendContactEmail({
+        email: trimmed,
+        source: "home",
       });
-
-      let apiError = "";
-      try {
-        const data = (await res.json()) as { error?: string };
-        if (typeof data?.error === "string") apiError = data.error;
-      } catch {
-        /* risposta non JSON */
-      }
-
-      if (!res.ok) {
-        throw new Error(apiError || `HTTP ${res.status}`);
-      }
-
       setSubmitStatus("success");
       setEmail("");
     } catch {
@@ -55,7 +39,7 @@ export function ContactBand() {
       : submitStatus === "success"
         ? "Grazie. Abbiamo registrato la richiesta di contatto dal sito e ti ricontatteremo presto."
         : submitStatus === "error"
-          ? "Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure scrivici direttamente a info@ianua.it."
+          ? "Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure scrivici direttamente a ianuacare@gmail.com."
           : contact.hint;
 
   return (

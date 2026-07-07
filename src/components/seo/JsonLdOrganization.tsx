@@ -14,11 +14,11 @@ export function JsonLdOrganization() {
         name: "Ianua",
         url: `${origin}/`,
         logo: logoUrl,
-        email: "info@ianua.it",
+        email: "ianuacare@gmail.com",
         contactPoint: [
           {
             "@type": "ContactPoint",
-            email: "info@ianua.it",
+            email: "ianuacare@gmail.com",
             contactType: "customer service",
             areaServed: "IT",
             availableLanguage: ["Italian"],

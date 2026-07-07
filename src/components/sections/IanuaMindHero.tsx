@@ -34,9 +34,6 @@ export function IanuaMindHero() {
             <a href={ianuaMindHero.primaryCta.href} className={styles.primaryCta}>
               {ianuaMindHero.primaryCta.label}
             </a>
-            <a href={ianuaMindHero.secondaryCta.href} className={styles.secondaryCta}>
-              {ianuaMindHero.secondaryCta.label}
-            </a>
           </div>
 
           <p className={styles.socialProof}>{ianuaMindHero.socialProof.text}</p>

@@ -17,7 +17,6 @@ export const ianuaMindHero = {
   },
   trustBadge: "Dati crittografati e conformità GDPR",
   primaryCta: { label: "Prova gratuitamente", href: "#contatti" },
-  secondaryCta: { label: "Prenota una demo", href: "#contatti" },
 };
 
 export type MindFeatureVideo = {

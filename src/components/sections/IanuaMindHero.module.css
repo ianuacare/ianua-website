@@ -81,8 +81,7 @@
   margin-top: 0.25rem;
 }
 
-.primaryCta,
-.secondaryCta {
+.primaryCta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -92,9 +91,6 @@
   font-weight: 500;
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.primaryCta {
   background: var(--mind-primary);
   color: #fff;
 }
@@ -102,18 +98,6 @@
 .primaryCta:hover,
 .primaryCta:focus-visible {
   background: var(--mind-primary-hover);
-  outline: none;
-}
-
-.secondaryCta {
-  color: var(--mind-primary);
-  border: 1.5px solid var(--mind-primary);
-  background: transparent;
-}
-
-.secondaryCta:hover,
-.secondaryCta:focus-visible {
-  background: var(--mind-primary-soft);
   outline: none;
 }
 
@@ -167,8 +151,7 @@
     align-items: stretch;
   }
 
-  .primaryCta,
-  .secondaryCta {
+  .primaryCta {
     width: 100%;
   }
 }

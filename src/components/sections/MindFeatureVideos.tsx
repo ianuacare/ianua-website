@@ -65,7 +65,6 @@ function FeatureCard({ item, index, inView, reduceMotion, onPlay }: FeatureCardP
               <path d="M8 5v14l11-7z" fill="currentColor" />
             </svg>
           </span>
-          <span className={styles.duration}>{item.duration}</span>
         </span>
       </button>
       <h3 className={styles.cardTitle}>{item.title}</h3>

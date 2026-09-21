@@ -22,7 +22,6 @@ export const ianuaMindHero = {
 export type MindFeatureVideo = {
   id: string;
   title: string;
-  duration: string;
   /** Path pubblico del video demo (sotto /public) */
   videoSrc?: string;
 };
@@ -36,49 +35,41 @@ export const mindFeatureVideos = {
     {
       id: "sedute",
       title: "Registrazione e trascrizione sedute con archiviazione privata",
-      duration: "1:24",
       videoSrc: "/ianua-mind/videos/registrazione_trascrizione.mp4",
     },
     {
       id: "riassunti",
       title: "Generazione automatica di riassunti",
-      duration: "1:12",
       videoSrc: "/ianua-mind/videos/riassunto.mp4",
     },
     {
       id: "marcatori",
       title: "Individuazione di marcatori emotivi e dei temi ricorrenti",
-      duration: "0:58",
       videoSrc: "/ianua-mind/videos/insights.mp4",
     },
     {
       id: "evoluzione",
       title: "Visualizzazione dell'evoluzione del percorso terapeutico",
-      duration: "1:18",
       videoSrc: "/ianua-mind/videos/percorso.mp4",
     },
     {
       id: "questionari",
       title: "Compilazione dei questionari psicologici — analisi nosografica",
-      duration: "1:32",
       videoSrc: "/ianua-mind/videos/questionario.mp4",
     },
     {
       id: "chatbot",
       title: "Second-opinion chatbot",
-      duration: "0:54",
       videoSrc: "/ianua-mind/videos/chatbot.mp4",
     },
     {
       id: "anamnesi",
       title: "Compilazione semi-automatica dell'anamnesi psicologica",
-      duration: "1:09",
       videoSrc: "/ianua-mind/videos/documento_clinico.mp4",
     },
     {
       id: "genogramma",
       title: "Generazione semi-automatica del genogramma",
-      duration: "1:15",
       videoSrc: "/ianua-mind/videos/genogramma.mp4",
     },
   ] as MindFeatureVideo[],

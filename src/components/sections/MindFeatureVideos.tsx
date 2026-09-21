@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
-import { mindFeatureVideos } from "../../copy/ianuaMindLanding";
+import { mindFeatureVideos, type MindFeatureVideo } from "../../copy/ianuaMindLanding";
 import { easeOut } from "./_motion";
 import styles from "./MindFeatureVideos.module.css";
 
@@ -23,13 +23,16 @@ function useGridColumns(): number {
 }
 
 type FeatureCardProps = {
-  item: (typeof mindFeatureVideos.items)[number];
+  item: MindFeatureVideo;
   index: number;
   inView: boolean;
   reduceMotion: boolean;
+  onPlay: (item: MindFeatureVideo) => void;
 };
 
-function FeatureCard({ item, index, inView, reduceMotion }: FeatureCardProps) {
+function FeatureCard({ item, index, inView, reduceMotion, onPlay }: FeatureCardProps) {
+  const hasVideo = Boolean(item.videoSrc);
+
   return (
     <motion.li
       className={styles.card}
@@ -40,13 +43,23 @@ function FeatureCard({ item, index, inView, reduceMotion }: FeatureCardProps) {
       <button
         type="button"
         className={styles.thumbBtn}
-        aria-label={`Riproduci video: ${item.title}`}
-        disabled={!item.videoUrl}
+        aria-label={hasVideo ? `Riproduci video: ${item.title}` : undefined}
+        disabled={!hasVideo}
         onClick={() => {
-          if (item.videoUrl) window.open(item.videoUrl, "_blank", "noopener,noreferrer");
+          if (item.videoSrc) onPlay(item);
         }}
       >
         <span className={styles.thumb}>
+          {hasVideo ? (
+            <video
+              className={styles.thumbVideo}
+              src={item.videoSrc}
+              muted
+              playsInline
+              preload="metadata"
+              aria-hidden
+            />
+          ) : null}
           <span className={styles.play} aria-hidden>
             <svg viewBox="0 0 24 24" width="28" height="28">
               <path d="M8 5v14l11-7z" fill="currentColor" />
@@ -60,6 +73,72 @@ function FeatureCard({ item, index, inView, reduceMotion }: FeatureCardProps) {
   );
 }
 
+type VideoModalProps = {
+  item: MindFeatureVideo;
+  onClose: () => void;
+};
+
+function VideoModal({ item, onClose }: VideoModalProps) {
+  const titleId = useId();
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    dialogRef.current?.focus();
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className={styles.modalOverlay}
+      role="presentation"
+      onClick={onClose}
+    >
+      <div
+        ref={dialogRef}
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className={styles.modalHeader}>
+          <h3 id={titleId} className={styles.modalTitle}>
+            {item.title}
+          </h3>
+          <button
+            type="button"
+            className={styles.modalClose}
+            aria-label="Chiudi video"
+            onClick={onClose}
+          >
+            ×
+          </button>
+        </div>
+        <video
+          className={styles.modalVideo}
+          src={item.videoSrc}
+          controls
+          autoPlay
+          playsInline
+        />
+      </div>
+    </div>
+  );
+}
+
 /**
  * Griglia di card video: prima riga visibile, le altre espandibili.
  */
@@ -70,6 +149,7 @@ export function MindFeatureVideos() {
   const motionSafe = reduceMotion !== true;
   const cols = useGridColumns();
   const [expanded, setExpanded] = useState(false);
+  const [activeVideo, setActiveVideo] = useState<MindFeatureVideo | null>(null);
 
   const items = mindFeatureVideos.items;
   const firstRow = items.slice(0, cols);
@@ -99,6 +179,7 @@ export function MindFeatureVideos() {
               index={index}
               inView={inView}
               reduceMotion={!motionSafe}
+              onPlay={setActiveVideo}
             />
           ))}
         </ul>
@@ -122,6 +203,7 @@ export function MindFeatureVideos() {
                     index={firstRow.length + index}
                     inView={inView}
                     reduceMotion={!motionSafe}
+                    onPlay={setActiveVideo}
                   />
                 ))}
               </ul>
@@ -143,6 +225,10 @@ export function MindFeatureVideos() {
           </div>
         ) : null}
       </div>
+
+      {activeVideo?.videoSrc ? (
+        <VideoModal item={activeVideo} onClose={() => setActiveVideo(null)} />
+      ) : null}
     </section>
   );
 }

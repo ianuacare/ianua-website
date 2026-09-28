@@ -2,6 +2,7 @@ import type { Segment } from "./home";
 
 export const ianuaMindNavItems = [
   { href: "#funzionalita", label: "Funzionalità" },
+  { href: "#novita", label: "Novità" },
   { href: "#prezzi", label: "Prezzi" },
   { href: "#faq", label: "FAQ" },
   { href: "#recensioni", label: "Recensioni" },
@@ -73,6 +74,37 @@ export const mindFeatureVideos = {
       videoSrc: "/ianua-mind/videos/genogramma.mp4",
     },
   ] as MindFeatureVideo[],
+};
+
+export type MindComingSoonItem = {
+  id: string;
+  title: string;
+  body: string;
+};
+
+export const mindComingSoon = {
+  eyebrow: "Roadmap",
+  title: "Novità in arrivo",
+  subtitle:
+    "Stiamo costruendo nuove funzionalità per rendere ancora più fluido il lavoro clinico quotidiano.",
+  badge: "In arrivo",
+  items: [
+    {
+      id: "meeting",
+      title: "Creazione meeting in piattaforma",
+      body: "Organizza e avvia gli incontri direttamente da Ianua Mind, senza uscire dal flusso di lavoro.",
+    },
+    {
+      id: "note-manoscritte",
+      title: "Caricamento note scritte a mano",
+      body: "Digitalizza appunti manoscritti e collegali al percorso del paziente in pochi passaggi.",
+    },
+    {
+      id: "tono-voce",
+      title: "Analisi del tono di voce",
+      body: "Evidenzia variazioni di tono e intensità vocale per arricchire la lettura della seduta.",
+    },
+  ] satisfies MindComingSoonItem[],
 };
 
 export type MindPricingPlan = {
@@ -196,7 +228,7 @@ export const mindContact = {
   title: "Parlaci delle tue esigenze",
   body: "Compila il modulo o contattaci direttamente. Ti risponderemo entro un giorno lavorativo.",
   email: "ianuacare@gmail.com",
-  phone: "+39 366 139 7864",
+  phone: "+1 2394754346",
   form: {
     nameLabel: "Nome e cognome",
     namePlaceholder: "Mario Rossi",
@@ -222,6 +254,7 @@ export const mindFooter = {
       title: "Prodotto",
       links: [
         { label: "Funzionalità", href: "#funzionalita" },
+        { label: "Novità", href: "#novita" },
         { label: "Prezzi", href: "#prezzi" },
         { label: "Prova gratuita", href: "#contatti" },
       ],

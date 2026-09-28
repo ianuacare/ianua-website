@@ -1,4 +1,5 @@
 import { IanuaMindHero } from "../components/sections/IanuaMindHero";
+import { MindComingSoon } from "../components/sections/MindComingSoon";
 import { MindContact } from "../components/sections/MindContact";
 import { MindFaq } from "../components/sections/MindFaq";
 import { MindFeatureVideos } from "../components/sections/MindFeatureVideos";
@@ -28,6 +29,7 @@ export default function IanuaMindLanding() {
       <main id="main-content" tabIndex={-1}>
         <IanuaMindHero />
         <MindFeatureVideos />
+        <MindComingSoon />
         <MindPricing />
         <MindFaq />
         <MindTestimonials />

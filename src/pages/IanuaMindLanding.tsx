@@ -4,7 +4,6 @@ import { MindContact } from "../components/sections/MindContact";
 import { MindFaq } from "../components/sections/MindFaq";
 import { MindFeatureVideos } from "../components/sections/MindFeatureVideos";
 import { MindFooter } from "../components/sections/MindFooter";
-import { MindPricing } from "../components/sections/MindPricing";
 import { MindTestimonials } from "../components/sections/MindTestimonials";
 import { JsonLdOrganization } from "../components/seo/JsonLdOrganization";
 import { PageMeta } from "../components/seo/PageMeta";
@@ -12,7 +11,7 @@ import { seoIanuaMindLanding } from "../seo/copy";
 import styles from "./IanuaMindLanding.module.css";
 
 /**
- * Landing page prodotto Ianua Mind — layout flat viola con hero, funzionalità, prezzi, FAQ, recensioni e contatti.
+ * Landing page prodotto Ianua Mind — layout flat viola con hero, funzionalità, FAQ, recensioni e contatti.
  */
 export default function IanuaMindLanding() {
   return (
@@ -30,7 +29,6 @@ export default function IanuaMindLanding() {
         <IanuaMindHero />
         <MindFeatureVideos />
         <MindComingSoon />
-        <MindPricing />
         <MindFaq />
         <MindTestimonials />
         <MindContact />

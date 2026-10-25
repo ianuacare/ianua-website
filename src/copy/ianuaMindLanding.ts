@@ -3,7 +3,6 @@ import type { Segment } from "./home";
 export const ianuaMindNavItems = [
   { href: "#funzionalita", label: "Funzionalità" },
   { href: "#novita", label: "Novità" },
-  { href: "#prezzi", label: "Prezzi" },
   { href: "#faq", label: "FAQ" },
   { href: "#recensioni", label: "Recensioni" },
   { href: "#contatti", label: "Contatti" },
@@ -255,7 +254,6 @@ export const mindFooter = {
       links: [
         { label: "Funzionalità", href: "#funzionalita" },
         { label: "Novità", href: "#novita" },
-        { label: "Prezzi", href: "#prezzi" },
         { label: "Prova gratuita", href: "#contatti" },
       ],
     },

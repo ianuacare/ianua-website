@@ -1,0 +1,20 @@
+{
+  "framework": "flask",
+  "orm": "ianuacare_postgres",
+  "test_runner": "pytest",
+  "runtime": "python",
+  "python_version": "3.12",
+  "type_checker": "mypy",
+  "src_path": "app",
+  "test_path": "tests",
+  "validation_library": "manual_and_openapi",
+  "logger": "stdlib_logging",
+  "package_manager": "pip",
+  "api_style": "rest",
+  "auth_strategy": "cognito_jwt",
+  "database": "postgresql",
+  "cache": "redis",
+  "queue": "celery",
+  "monorepo": false,
+  "async_first": false
+}

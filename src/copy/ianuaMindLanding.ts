@@ -2,21 +2,146 @@ import type { Segment } from "./home";
 
 export const ianuaMindNavItems = [
   { href: "#funzionalita", label: "Funzionalità" },
-  { href: "#novita", label: "Novità" },
+  { href: "#percorso", label: "Percorso" },
+  { href: "#sicurezza", label: "Sicurezza" },
   { href: "#faq", label: "FAQ" },
-  { href: "#recensioni", label: "Recensioni" },
-  { href: "#contatti", label: "Contatti" },
 ] as const;
 
 export const ianuaMindHero = {
   title: "Dashboard clinica costruita per seguire percorsi, pazienti e sedute",
   subtitle:
-    "Un'interfaccia chiara e rapida, pensata per il lavoro quotidiano del professionista.",
+    "Per psicologi e professionisti della salute mentale. Un'interfaccia chiara e rapida, pensata per il lavoro quotidiano.",
   socialProof: {
     text: "Pensato per semplificare il lavoro clinico quotidiano, senza compromettere la qualità della cura.",
   },
   trustBadge: "Dati crittografati e conformità GDPR",
   primaryCta: { label: "Prova gratuitamente", href: "#contatti" },
+};
+
+export type MindScene =
+  | "session"
+  | "summary"
+  | "markers"
+  | "path"
+  | "forms"
+  | "chat"
+  | "history"
+  | "geno";
+
+export type MindFeature = {
+  id: string;
+  label: string;
+  summary: string;
+  scene: MindScene;
+};
+
+export const mindFeatures = {
+  title: "Dalla seduta al percorso",
+  lead: "Otto strumenti nella stessa dashboard. Scegline uno e guarda come si presenta il lavoro.",
+  pause: "Metti in pausa",
+  play: "Riprendi",
+  items: [
+    {
+      id: "sedute",
+      label: "Sedute",
+      summary:
+        "La seduta viene registrata e trascritta. L'archivio resta privato e consultabile solo dal professionista.",
+      scene: "session",
+    },
+    {
+      id: "riassunti",
+      label: "Riassunti",
+      summary:
+        "Dopo la seduta compare una sintesi, pronta da rileggere prima dell'incontro successivo.",
+      scene: "summary",
+    },
+    {
+      id: "marcatori",
+      label: "Marcatori",
+      summary:
+        "Temi ricorrenti e segnali emotivi restano visibili, senza perdersi tra una seduta e l'altra.",
+      scene: "markers",
+    },
+    {
+      id: "evoluzione",
+      label: "Percorso",
+      summary:
+        "Le sedute si dispongono nel tempo, così il percorso si legge come continuità.",
+      scene: "path",
+    },
+    {
+      id: "questionari",
+      label: "Questionari",
+      summary:
+        "I questionari psicologici stanno nel percorso e restituiscono una lettura nosografica ordinata.",
+      scene: "forms",
+    },
+    {
+      id: "chatbot",
+      label: "Second opinion",
+      summary:
+        "Un confronto sul caso, a partire dal materiale già presente in cartella e dalla letteratura scientifica.",
+      scene: "chat",
+    },
+    {
+      id: "anamnesi",
+      label: "Anamnesi",
+      summary:
+        "La scheda anamnestica si compila a partire dalla seduta e resta modificabile.",
+      scene: "history",
+    },
+    {
+      id: "genogramma",
+      label: "Genogramma",
+      summary:
+        "Le relazioni familiari prendono forma in uno schema, dalle informazioni già raccolte.",
+      scene: "geno",
+    },
+  ] satisfies MindFeature[],
+};
+
+export const mindFlow = {
+  title: "Il ritmo di una seduta",
+  lead: "Tre passaggi, poi si torna al paziente.",
+  steps: [
+    {
+      id: "registra",
+      title: "Registra",
+      body: "Acquisisci la seduta in ambiente sicuro, con accesso riservato al professionista.",
+    },
+    {
+      id: "analizza",
+      title: "Analizza",
+      body: "Ottieni riassunti, marcatori emotivi e temi ricorrenti già strutturati.",
+    },
+    {
+      id: "monitora",
+      title: "Monitora",
+      body: "Consulta la progressione nel tempo e prepara il prossimo incontro con più contesto.",
+    },
+  ],
+};
+
+export const mindTrust = {
+  title: "I dati clinici restano del professionista",
+  lead: "Crittografia, archivio privato e conformità GDPR sono parte del prodotto.",
+  items: [
+    {
+      id: "gdpr",
+      title: "Conformità GDPR",
+      body: "Dati clinici crittografati, archiviati in Unione Europea e gestiti secondo i requisiti per la salute. Si possono esportare o eliminare in qualsiasi momento.",
+    },
+    {
+      id: "privato",
+      title: "Archivio privato",
+      body: "Ogni seduta è accessibile solo al professionista titolare. L'archivio è separato per paziente, con accessi tracciati.",
+    },
+    {
+      id: "prova",
+      title: "Prova senza carta",
+      body: "Tutte le funzionalità si provano senza carta di credito. Al termine si sceglie un piano oppure si interrompe, senza costi.",
+    },
+  ],
 };
 
 export type MindFeatureVideo = {
@@ -253,6 +378,7 @@ export const mindFooter = {
       title: "Prodotto",
       links: [
         { label: "Funzionalità", href: "#funzionalita" },
+        { label: "Percorso", href: "#percorso" },
         { label: "Novità", href: "#novita" },
         { label: "Prova gratuita", href: "#contatti" },
       ],
@@ -262,15 +388,15 @@ export const mindFooter = {
       links: [
         { label: "Chi siamo", href: "/" },
         { label: "Contatti", href: "#contatti" },
-        { label: "Privacy", href: "#contatti" },
+        { label: "Sicurezza", href: "#sicurezza" },
       ],
     },
     {
       title: "Risorse",
       links: [
         { label: "FAQ", href: "#faq" },
-        { label: "Recensioni", href: "#recensioni" },
-        { label: "Demo", href: "#contatti" },
+        { label: "Novità in arrivo", href: "#novita" },
+        { label: "Scrivici", href: "#contatti" },
       ],
     },
   ],

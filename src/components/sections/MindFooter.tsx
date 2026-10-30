@@ -48,9 +48,22 @@ export function MindFooter() {
       </div>
 
       <div className={styles.bottom}>
-        <p className={styles.copy}>
-          © {new Date().getFullYear()} Ianua Mind. Tutti i diritti riservati.
-        </p>
+        <div>
+          <p className={styles.copy}>
+            © {new Date().getFullYear()} Ianua Mind. Tutti i diritti riservati.
+          </p>
+          <p className={styles.credit}>
+            Foto di{" "}
+            <a
+              href="https://www.pexels.com/photo/3958425/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Polina Zimmerman
+            </a>{" "}
+            su Pexels. È illustrativa e non rappresenta pazienti o collaboratori Ianua.
+          </p>
+        </div>
         <div className={styles.social}>
           {mindFooter.social.map((item) => (
             <a

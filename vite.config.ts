@@ -54,5 +54,10 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react(), writeSeoFiles(siteOrigin)],
     base: "/",
+    server: {
+      watch: {
+        ignored: ["**/*.mp4"],
+      },
+    },
   };
 });

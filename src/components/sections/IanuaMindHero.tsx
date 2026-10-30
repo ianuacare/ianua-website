@@ -1,53 +1,89 @@
+import { useEffect, useRef, useState } from "react";
+import psychologist from "../../assets/images/mind-psychologist.jpg";
 import { IanuaMindWordmark } from "../IanuaMindWordmark";
-import {
-  ianuaMindHero,
-  ianuaMindNavItems,
-} from "../../copy/ianuaMindLanding";
-import { MindHeroVisual } from "./MindHeroVisual";
+import { ianuaMindHero, ianuaMindNavItems } from "../../copy/ianuaMindLanding";
 import styles from "./IanuaMindHero.module.css";
 
 /**
- * Hero della landing Ianua Mind: copy a sinistra, mockup a destra, nav flat viola.
+ * Navigazione e apertura della landing Ianua Mind.
+ * La foto è illustrativa e non ritrae pazienti o collaboratori Ianua.
  */
 export function IanuaMindHero() {
+  const [open, setOpen] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && open) {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    };
+    const media = window.matchMedia("(min-width: 901px)");
+    const onResize = () => {
+      if (media.matches) setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    media.addEventListener("change", onResize);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      media.removeEventListener("change", onResize);
+    };
+  }, [open]);
+
   return (
-    <section id="top" className={styles.hero}>
-      <header className={styles.topNav}>
-        <a href="#top" className={styles.brandLink} aria-label="Vai all'inizio">
+    <>
+      <header className={styles.header}>
+        <a href="#top" className={styles.brand} aria-label="Ianua Mind, torna all'inizio">
           <IanuaMindWordmark />
         </a>
-        <nav className={styles.nav} aria-label="Navigazione Ianua Mind">
+        <nav
+          id="mind-nav"
+          className={open ? styles.navOpen : styles.nav}
+          aria-label="Navigazione Ianua Mind"
+        >
           {ianuaMindNavItems.map((item) => (
-            <a key={item.href} href={item.href} className={styles.navLink}>
+            <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
               {item.label}
             </a>
           ))}
         </nav>
+        <a className={styles.navCta} href={ianuaMindHero.primaryCta.href}>
+          {ianuaMindHero.primaryCta.label}
+        </a>
+        <button
+          ref={toggle}
+          type="button"
+          className={styles.menu}
+          aria-expanded={open}
+          aria-controls="mind-nav"
+          onClick={() => setOpen((value) => !value)}
+        >
+          {open ? "Chiudi −" : "Menu +"}
+        </button>
       </header>
 
-      <div className={styles.content}>
-        <div className={styles.copyCol}>
-          <h1 className={styles.title}>{ianuaMindHero.title}</h1>
+      <section id="top" className={styles.hero} aria-labelledby="mind-hero-title">
+        <div className={styles.copy}>
+          <h1 id="mind-hero-title" className={styles.title}>
+            {ianuaMindHero.title}
+          </h1>
           <p className={styles.subtitle}>{ianuaMindHero.subtitle}</p>
-
-          <div className={styles.ctaRow}>
-            <a href={ianuaMindHero.primaryCta.href} className={styles.primaryCta}>
-              {ianuaMindHero.primaryCta.label}
-            </a>
-          </div>
-
-          <p className={styles.socialProof}>{ianuaMindHero.socialProof.text}</p>
-
-          <p className={styles.trustBadge}>
-            <span className={styles.shield} aria-hidden>
-              ✓
-            </span>
-            {ianuaMindHero.trustBadge}
-          </p>
+          <a className={styles.cta} href={ianuaMindHero.primaryCta.href}>
+            {ianuaMindHero.primaryCta.label}
+          </a>
+          <p className={styles.trust}>{ianuaMindHero.trustBadge}</p>
         </div>
-
-        <MindHeroVisual />
-      </div>
-    </section>
+        <div className={styles.stage}>
+          <img
+            className={styles.photo}
+            src={psychologist}
+            alt="Psicologa in colloquio in uno studio luminoso"
+            width={1800}
+            height={1200}
+          />
+        </div>
+      </section>
+    </>
   );
 }

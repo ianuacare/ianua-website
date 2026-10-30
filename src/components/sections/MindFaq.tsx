@@ -28,13 +28,9 @@ export function MindFaq() {
           animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -16 }}
           transition={{ duration: 0.55, ease: easeOut }}
         >
-          <p className={styles.eyebrow}>{mindFaq.eyebrow}</p>
           <h2 id="mind-faq-heading" className={styles.title}>
             {mindFaq.title}
           </h2>
-          <a href={mindFaq.cta.href} className={styles.ctaLink}>
-            {mindFaq.cta.label} →
-          </a>
         </motion.div>
 
         <motion.div

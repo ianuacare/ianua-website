@@ -66,7 +66,6 @@ export function MindContact() {
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.55, ease: easeOut }}
         >
-          <p className={styles.eyebrow}>{mindContact.eyebrow}</p>
           <h2 id="mind-contact-heading" className={styles.title}>
             {mindContact.title}
           </h2>
@@ -74,12 +73,10 @@ export function MindContact() {
 
           <div className={styles.details}>
             <a href={`mailto:${mindContact.email}`} className={styles.detailLink}>
-              <span className={styles.detailLabel}>Email</span>
-              <span className={styles.detailValue}>{mindContact.email}</span>
+              {mindContact.email}
             </a>
             <a href={`tel:${mindContact.phone.replace(/\s/g, "")}`} className={styles.detailLink}>
-              <span className={styles.detailLabel}>Telefono</span>
-              <span className={styles.detailValue}>{mindContact.phone}</span>
+              {mindContact.phone}
             </a>
           </div>
         </motion.div>

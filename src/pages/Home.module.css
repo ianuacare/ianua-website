@@ -122,11 +122,12 @@
   inset: 0;
   z-index: -3;
 }
-.heroPhoto img {
+.heroPhoto img,
+.heroVideo {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  object-position: 65% 55%;
+  object-position: center center;
 }
 .heroColor {
   position: absolute;
@@ -652,8 +653,9 @@
     max-width: 600px;
     line-height: 1.04;
   }
-  .heroPhoto img {
-    object-position: 52% center;
+  .heroPhoto img,
+  .heroVideo {
+    object-position: center center;
   }
   .heroColor {
     background-image: url("../assets/images/bg-mobile.png");
@@ -850,8 +852,9 @@
   .heroSecond {
     margin-top: 20px;
   }
-  .heroPhoto img {
-    object-position: 46% center;
+  .heroPhoto img,
+  .heroVideo {
+    object-position: center center;
   }
   .heroBottom {
     display: block;

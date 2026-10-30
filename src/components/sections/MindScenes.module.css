@@ -1,0 +1,293 @@
+.frame {
+  width: min(100%, 440px);
+  min-height: 300px;
+  background: var(--white, #fffcf8);
+  border-radius: 22px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  box-shadow: 0 18px 50px rgba(60, 52, 112, 0.08);
+}
+
+.wave {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 120px;
+}
+
+.bar {
+  flex: 1;
+  height: 100%;
+  border-radius: 7px 7px 3px 3px;
+  background: var(--purple, #5a4e93);
+  transform: scaleY(var(--h));
+  transform-origin: bottom;
+  animation: pulse 1.4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 70ms);
+}
+
+.stack,
+.ghost,
+.card,
+.markerList,
+.checks,
+.chat,
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rule,
+.ruleLight {
+  display: block;
+  height: 9px;
+  border-radius: 99px;
+  background: #ddd8ea;
+  transform-origin: left center;
+  animation: draw 0.7s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)) both;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+
+.ruleLight {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.ghost .rule {
+  opacity: 0.55;
+}
+
+.card {
+  background: var(--purple, #5a4e93);
+  color: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  animation: rise 0.6s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)) both;
+}
+
+.cardTitle,
+.fieldLabel,
+.check span {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  font-size: 15px;
+}
+
+.markerRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: rise 0.5s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)) both;
+  animation-delay: calc(var(--i) * 80ms);
+}
+
+.markerRow .rule {
+  flex: 1;
+}
+
+.pips {
+  display: flex;
+  gap: 6px;
+}
+
+.pip,
+.pipOn {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ddd8ea;
+}
+
+.pipOn {
+  background: var(--purple, #5a4e93);
+  animation: pop 0.4s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)) both;
+}
+
+.columns {
+  height: 210px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.column,
+.columnOn {
+  flex: 1;
+  height: var(--h);
+  border-radius: 8px;
+  background: #ddd8ea;
+  transform-origin: bottom;
+  animation: grow 0.7s var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)) both;
+  animation-delay: calc(var(--i) * 60ms);
+}
+
+.columnOn {
+  background: var(--purple, #5a4e93);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: rise 0.45s both;
+  animation-delay: calc(var(--i) * 90ms);
+}
+
+.box {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--purple, #5a4e93);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.box i {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--purple, #5a4e93);
+  animation: pop 0.35s both;
+  animation-delay: calc(0.15s + var(--i) * 90ms);
+}
+
+.bubbleIn,
+.bubbleOut {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(78%, 260px);
+  padding: 14px 16px;
+  border-radius: 16px;
+  animation: rise 0.45s both;
+  animation-delay: calc(var(--i) * 140ms);
+}
+
+.bubbleIn {
+  background: var(--lilac, #eceaf4);
+}
+
+.bubbleOut {
+  align-self: flex-end;
+  background: var(--purple, #5a4e93);
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 12px;
+  align-items: center;
+  animation: rise 0.45s both;
+  animation-delay: calc(var(--i) * 80ms);
+}
+
+.fill {
+  display: block;
+  height: 10px;
+  width: var(--w);
+  border-radius: 99px;
+  background: var(--purple, #5a4e93);
+  transform-origin: left center;
+  animation: draw 0.7s both;
+  animation-delay: calc(var(--i) * 80ms);
+}
+
+.geno {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.parents {
+  width: min(100%, 240px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.node,
+.nodeFill {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--purple, #5a4e93);
+  background: var(--white, #fffcf8);
+  animation: pop 0.4s both;
+  animation-delay: calc(var(--i) * 90ms);
+}
+
+.nodeFill {
+  background: var(--purple, #5a4e93);
+}
+
+.bridge {
+  width: min(100%, 204px);
+  height: 2px;
+  margin-top: 14px;
+  background: var(--purple, #5a4e93);
+}
+
+.stem {
+  width: 2px;
+  height: 28px;
+  background: var(--purple, #5a4e93);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scaleY(calc(var(--h) * 0.55));
+  }
+  50% {
+    transform: scaleY(var(--h));
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0.15);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scaleY(0.15);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}

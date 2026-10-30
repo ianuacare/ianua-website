@@ -121,6 +121,36 @@ function Header() {
   );
 }
 
+function HeroVideo({ still }: { still: boolean }) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    if (still) {
+      video.pause();
+      return;
+    }
+    void video.play().catch(() => {
+      /* L'autoplay può essere bloccato dal browser. */
+    });
+  }, [still]);
+
+  return (
+    <video
+      ref={ref}
+      className={s.heroVideo}
+      src="/home/hero.mp4?v=4"
+      muted
+      loop
+      playsInline
+      autoPlay={!still}
+      preload="metadata"
+      aria-hidden="true"
+    />
+  );
+}
+
 function Hero({
   still,
   onToggle,
@@ -146,13 +176,7 @@ function Hero({
         animate={{ scale: 1 }}
         transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
       >
-        <img
-          src={human}
-          alt="Mani intrecciate in un gesto di vicinanza."
-          width="1920"
-          height="1280"
-          fetchPriority="high"
-        />
+        <HeroVideo still={still} />
       </motion.div>
       <div className={s.heroColor} aria-hidden="true" />
       <motion.div

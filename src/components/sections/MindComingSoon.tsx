@@ -21,7 +21,6 @@ export function MindComingSoon() {
     >
       <div className={styles.inner}>
         <header className={styles.header}>
-          <p className={styles.eyebrow}>{mindComingSoon.eyebrow}</p>
           <h2 id="mind-coming-soon-heading" className={styles.title}>
             {mindComingSoon.title}
           </h2>
@@ -41,7 +40,7 @@ export function MindComingSoon() {
                 ease: easeOut,
               }}
             >
-              <span className={styles.badge}>{mindComingSoon.badge}</span>
+              <p className={styles.badge}>{mindComingSoon.badge}</p>
               <h3 className={styles.itemTitle}>{item.title}</h3>
               <p className={styles.itemBody}>{item.body}</p>
             </motion.li>

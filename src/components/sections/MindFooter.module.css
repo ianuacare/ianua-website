@@ -1,7 +1,7 @@
 .footer {
-  background: var(--mind-text);
+  background: var(--purple-deep, #3c3470);
   color: #fff;
-  padding: clamp(3rem, 6vw, 4rem) clamp(1.25rem, 4vw, 3rem) 1.5rem;
+  padding: clamp(64px, 8vw, 96px) clamp(20px, 4vw, 48px) 28px;
 }
 
 .inner {
@@ -10,8 +10,7 @@
   display: grid;
   grid-template-columns: 1.2fr 2fr;
   gap: clamp(2rem, 4vw, 3rem);
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 48px;
 }
 
 .brandCol {
@@ -23,9 +22,9 @@
 .tagline {
   margin: 0;
   max-width: 32ch;
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.65);
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .cols {
@@ -35,12 +34,12 @@
 }
 
 .colTitle {
-  margin: 0 0 0.75rem;
-  font-size: 0.75rem;
+  margin: 0 0 12px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
   font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: -0.02em;
+  color: #fff;
 }
 
 .colList {
@@ -53,9 +52,9 @@
 }
 
 .colLink {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 16px;
 }
 
 .colLink:hover,
@@ -70,15 +69,27 @@
   padding-top: 1.25rem;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.copy {
+.copy,
+.credit {
   margin: 0;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.credit {
+  margin-top: 8px;
+  max-width: 46ch;
+  line-height: 1.45;
+}
+
+.credit a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .social {
@@ -89,7 +100,7 @@
 .socialLink {
   color: rgba(255, 255, 255, 0.65);
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 15px;
 }
 
 .socialLink:hover,

@@ -1,0 +1,131 @@
+.section {
+  background: var(--lilac, #eceaf4);
+  padding: clamp(28px, 5vw, 64px) clamp(16px, 3vw, 40px) clamp(36px, 5vw, 64px);
+}
+
+.frame {
+  position: relative;
+  width: min(760px, 100%);
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #1c1733;
+  box-shadow: 0 22px 60px rgba(28, 23, 51, 0.14);
+  transform-origin: center top;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #1c1733;
+  cursor: pointer;
+}
+
+.scrub {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  z-index: 1;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.frame:hover .scrub,
+.frame:focus-within .scrub {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scrub input {
+  --progress: 0%;
+  display: block;
+  width: 100%;
+  height: 18px;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.scrub input::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #fff var(--progress),
+    rgba(255, 252, 248, 0.42) var(--progress)
+  );
+}
+
+.scrub input::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5.5px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.28);
+}
+
+.scrub input::-moz-range-track {
+  height: 3px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #fff var(--progress),
+    rgba(255, 252, 248, 0.42) var(--progress)
+  );
+}
+
+.scrub input::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+}
+
+@media (hover: none) {
+  .scrub {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: min(760px, 100%);
+  margin: 14px auto 0;
+}
+
+.controls button.control {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: var(--white, #fffcf8);
+  color: #1c1733;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.controls button.control:hover {
+  background: #fff;
+  color: var(--purple, #5a4e93);
+}
+
+@media (max-width: 700px) {
+  .frame {
+    border-radius: 18px;
+  }
+}

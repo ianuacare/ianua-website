@@ -15,7 +15,7 @@ export const ianuaMindHero = {
     text: "Pensato per semplificare il lavoro clinico quotidiano, senza compromettere la qualità della cura.",
   },
   trustBadge: "Dati crittografati e conformità GDPR",
-  primaryCta: { label: "Prova gratuitamente", href: "#contatti" },
+  primaryCta: { label: "Prova gratuitamente", href: "https://mind.ianuacare.it/login" },
 };
 
 export type MindScene =
@@ -204,6 +204,19 @@ export type MindComingSoonItem = {
   id: string;
   title: string;
   body: string;
+};
+
+export const mindDemo = {
+  title: "Ianua Mind, in meno di un minuto",
+  subtitle:
+    "Dall'agenda alla seduta, dalla trascrizione agli spunti clinici fino all'Agent: guarda come il lavoro quotidiano trova un unico spazio.",
+  play: "Riproduci",
+  pause: "Metti in pausa",
+  back: "Indietro di 10 secondi",
+  forward: "Avanti di 10 secondi",
+  unmute: "Attiva audio",
+  mute: "Disattiva audio",
+  seek: "Posizione nel video",
 };
 
 export const mindComingSoon = {

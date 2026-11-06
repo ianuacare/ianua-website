@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState, type ChangeEvent, type CSSProperties } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { mindDemo } from "../../copy/ianuaMindLanding";
 import styles from "./MindDemo.module.css";
+
+function formatTime(seconds: number) {
+  const total = Math.max(0, Math.floor(seconds));
+  return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, "0")}`;
+}
 
 /**
  * Dimostrazione del prodotto, subito sotto l'apertura.
@@ -86,7 +92,7 @@ export function MindDemo() {
   const progress = duration > 0 ? (time / duration) * 100 : 0;
 
   return (
-    <section ref={sectionRef} className={styles.section} aria-label="Dimostrazione di Ianua Mind">
+    <section ref={sectionRef} className={styles.section} aria-label="Video dimostrativo di Ianua Mind">
       <motion.div className={styles.frame} style={reduce ? undefined : { y, scale, opacity }}>
         <video
           ref={videoRef}
@@ -107,18 +113,21 @@ export function MindDemo() {
             step={0.1}
             value={Math.min(time, duration || 0)}
             onChange={onScrub}
-            aria-label="Posizione nel video"
+            aria-label={mindDemo.seek}
             style={{ "--progress": `${progress}%` } as CSSProperties}
           />
         </label>
       </motion.div>
       <div className={styles.controls}>
         <button type="button" className={styles.control} onClick={togglePlay} aria-pressed={playing}>
-          {playing ? "Metti in pausa" : "Riproduci"}
+          {playing ? mindDemo.pause : mindDemo.play}
         </button>
         <button type="button" className={styles.control} onClick={toggleMuted} aria-pressed={!muted}>
-          {muted ? "Attiva audio" : "Muto"}
+          {muted ? mindDemo.unmute : mindDemo.mute}
         </button>
+        <span className={styles.time} aria-hidden="true">
+          {formatTime(time)} / {formatTime(duration)}
+        </span>
       </div>
     </section>
   );

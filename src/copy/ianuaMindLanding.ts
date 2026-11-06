@@ -3,6 +3,7 @@ import type { Segment } from "./home";
 export const ianuaMindNavItems = [
   { href: "#funzionalita", label: "Funzionalità" },
   { href: "#percorso", label: "Percorso" },
+  { href: "#novita", label: "Novità" },
   { href: "#sicurezza", label: "Sicurezza" },
   { href: "#faq", label: "FAQ" },
 ] as const;
@@ -221,16 +222,11 @@ export const mindDemo = {
 
 export const mindComingSoon = {
   eyebrow: "Roadmap",
-  title: "Novità in arrivo",
+  title: "Novità",
   subtitle:
-    "Stiamo costruendo nuove funzionalità per rendere ancora più fluido il lavoro clinico quotidiano.",
-  badge: "In arrivo",
+    "Segui l’evoluzione di Ianua Mind: gli strumenti già disponibili e le funzionalità a cui stiamo lavorando.",
+  badge: "In sviluppo",
   items: [
-    {
-      id: "meeting",
-      title: "Creazione meeting in piattaforma",
-      body: "Organizza e avvia gli incontri direttamente da Ianua Mind, senza uscire dal flusso di lavoro.",
-    },
     {
       id: "note-manoscritte",
       title: "Caricamento note scritte a mano",
@@ -408,7 +404,7 @@ export const mindFooter = {
       title: "Risorse",
       links: [
         { label: "FAQ", href: "#faq" },
-        { label: "Novità in arrivo", href: "#novita" },
+        { label: "Proponi una funzionalità", href: "#proponi-funzionalita" },
         { label: "Scrivici", href: "#contatti" },
       ],
     },

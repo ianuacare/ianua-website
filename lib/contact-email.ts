@@ -20,6 +20,8 @@ function contactTitle(source: string): string {
   switch (source) {
     case "home":
       return "Home — richiesta contatto";
+    case "ianua-mind-feature-request":
+      return "Ianua Mind — proposta funzionalità";
     case "ianua-mind":
       return "Ianua Mind — richiesta contatto";
     default:

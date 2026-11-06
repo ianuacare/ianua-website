@@ -6,6 +6,7 @@ import { MindFaq } from "../components/sections/MindFaq";
 import { MindFeatures } from "../components/sections/MindFeatures";
 import { MindFlow } from "../components/sections/MindFlow";
 import { MindFooter } from "../components/sections/MindFooter";
+import { MindPricing } from "../components/sections/MindPricing";
 import { MindTrust } from "../components/sections/MindTrust";
 import { JsonLdOrganization } from "../components/seo/JsonLdOrganization";
 import { PageMeta } from "../components/seo/PageMeta";
@@ -34,6 +35,7 @@ export default function IanuaMindLanding() {
         <MindFlow />
         <MindComingSoon />
         <MindTrust />
+        <MindPricing />
         <MindFaq />
         <MindContact />
         <MindFooter />

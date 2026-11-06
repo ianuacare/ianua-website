@@ -103,3 +103,7 @@
     transition: none !important;
   }
 }
+
+@media (max-width: 600px) {
+  .page section[id], .page aside[id] { scroll-margin-top: 150px; }
+}

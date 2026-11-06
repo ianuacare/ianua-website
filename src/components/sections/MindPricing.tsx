@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
-import { mindPricing, mindPricingSharedFeatures } from "../../copy/ianuaMindLanding";
+import { mindPricing } from "../../copy/ianuaMindLanding";
 import { easeOut } from "./_motion";
 import styles from "./MindPricing.module.css";
 
@@ -57,7 +57,7 @@ export function MindPricing() {
 
               {plan.monthlyEquivalent < mindPricing.monthlyReference ? (
                 <p className={styles.equivalent}>
-                  ≈ <strong>€{formatEuro(plan.monthlyEquivalent)}</strong>/mese
+                  <strong>€{formatEuro(plan.monthlyEquivalent)}</strong>/mese
                 </p>
               ) : (
                 <p className={styles.equivalent}>
@@ -65,15 +65,14 @@ export function MindPricing() {
                 </p>
               )}
 
-              {plan.savingsEuro && plan.savingsPercent ? (
+              {plan.savingsEuro ? (
                 <p className={styles.savings}>
-                  Risparmi <strong>€{formatEuro(plan.savingsEuro)}</strong> (
-                  {plan.savingsPercent}%)
+                  Risparmi <strong>€{formatEuro(plan.savingsEuro)}</strong>
                   {plan.id === "trimestrale" ? " ogni trimestre" : " all'anno"}
                   {" "}rispetto al mensile
                 </p>
               ) : (
-                <p className={styles.savingsMuted}>Nessun vincolo di durata</p>
+                <p className={styles.savingsMuted}>Fatturazione mensile</p>
               )}
 
               <a
@@ -86,6 +85,12 @@ export function MindPricing() {
           ))}
         </ul>
 
+        <aside className={styles.access} aria-labelledby="mind-lifetime-access-heading">
+          <h3 id="mind-lifetime-access-heading">{mindPricing.access.title}</h3>
+          <p className={styles.accessBody}>{mindPricing.access.body}</p>
+          <p className={styles.accessDetail}>{mindPricing.access.detail}</p>
+        </aside>
+
         <motion.div
           className={styles.featuresBlock}
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
@@ -93,16 +98,7 @@ export function MindPricing() {
           transition={{ duration: 0.55, delay: reduceMotion ? 0 : 0.25, ease: easeOut }}
         >
           <h3 className={styles.featuresTitle}>{mindPricing.featuresTitle}</h3>
-          <ul className={styles.features}>
-            {mindPricingSharedFeatures.map((feature) => (
-              <li key={feature} className={styles.feature}>
-                <span className={styles.check} aria-hidden>
-                  ✓
-                </span>
-                {feature}
-              </li>
-            ))}
-          </ul>
+          <p className={styles.featuresBody}>{mindPricing.featuresBody}</p>
         </motion.div>
       </div>
     </section>

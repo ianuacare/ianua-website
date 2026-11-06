@@ -49,7 +49,7 @@ export function IanuaMindHero() {
           ))}
         </nav>
         <a className={styles.navCta} href={ianuaMindHero.primaryCta.href}>
-          {ianuaMindHero.primaryCta.label}
+          Prova gratis
         </a>
         <button
           ref={toggle}

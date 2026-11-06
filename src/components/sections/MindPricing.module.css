@@ -236,3 +236,47 @@
     grid-template-columns: 1fr;
   }
 }
+
+.section { --mind-radius-lg: 24px; --mind-primary-soft: var(--lilac, #eceaf4); background: var(--white, #fffcf8); }
+.section .subtitle { margin: 20px auto 0; }
+.card .planName { margin-bottom: 12px; font-size: 26px; }
+.card a.ctaPrimary { color: #fff; }
+.card a.ctaSecondary { color: var(--mind-primary); }
+.section .featuresTitle { margin-bottom: 24px; font-size: 26px; }
+@media (max-width: 900px) { .grid { gap: 28px; } }
+
+.access {
+  margin-top: 32px;
+  padding: clamp(24px, 4vw, 36px);
+  border-left: 3px solid var(--mind-primary);
+  border-radius: 0 20px 20px 0;
+  background: var(--lilac, #eceaf4);
+}
+.access h3 {
+  font-size: clamp(28px, 3vw, 36px);
+  max-width: 28ch;
+  color: var(--mind-text);
+}
+.access .accessBody {
+  margin-top: 18px;
+  max-width: 72ch;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--mind-text);
+}
+.access .accessDetail {
+  margin-top: 12px;
+  max-width: 88ch;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--mind-muted);
+}
+
+.featuresBlock .featuresBody {
+  max-width: 66ch;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--mind-muted);
+  font-size: 17px;
+  line-height: 1.55;
+}

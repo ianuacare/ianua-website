@@ -185,3 +185,11 @@
     min-height: 460px;
   }
 }
+
+@media (max-width: 600px) {
+  .header { flex-wrap: wrap; gap: 10px 20px; }
+  .menu { margin-left: auto; }
+  .header a.navCta { order: 3; width: 100%; margin-left: 0; text-align: center; }
+}
+
+.nav, .navOpen { gap: clamp(12px, 1.8vw, 28px); }

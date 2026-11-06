@@ -4,6 +4,7 @@ export const ianuaMindNavItems = [
   { href: "#funzionalita", label: "Funzionalità" },
   { href: "#percorso", label: "Percorso" },
   { href: "#novita", label: "Novità" },
+  { href: "#prezzi", label: "Prezzi" },
   { href: "#sicurezza", label: "Sicurezza" },
   { href: "#faq", label: "FAQ" },
 ] as const;
@@ -16,7 +17,7 @@ export const ianuaMindHero = {
     text: "Pensato per semplificare il lavoro clinico quotidiano, senza compromettere la qualità della cura.",
   },
   trustBadge: "Dati crittografati e conformità GDPR",
-  primaryCta: { label: "Prova gratuitamente", href: "https://mind.ianuacare.it/login" },
+  primaryCta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/login" },
 };
 
 export type MindScene =
@@ -140,7 +141,7 @@ export const mindTrust = {
     {
       id: "prova",
       title: "Prova senza carta",
-      body: "Tutte le funzionalità si provano senza carta di credito. Al termine si sceglie un piano oppure si interrompe, senza costi.",
+      body: "Tutte le funzionalità si provano per 30 giorni senza carta di credito. Al termine si sceglie un piano oppure si interrompe, senza costi.",
     },
   ],
 };
@@ -271,42 +272,46 @@ export const mindPricingSharedFeatures = [
 
 export const mindPricing = {
   eyebrow: "Prezzi trasparenti",
-  title: "Scegli il ciclo di fatturazione",
+  title: "30 giorni gratis, poi scegli il tuo piano",
   subtitle:
-    "Tutte le funzionalità sono incluse in ogni abbonamento. Più a lungo ti impegni, più risparmi.",
-  featuresTitle: "Incluso in ogni piano",
-  monthlyReference: 99,
+    "Prova tutte le funzionalità per 30 giorni senza carta di credito. Al termine scegli se abbonarti: 49 € al mese, 132 € ogni trimestre oppure 480 € all’anno.",
+  access: {
+    title: "Il tuo lavoro resta consultabile, anche senza abbonamento",
+    body: "Se l’abbonamento scade, mantieni l’accesso a vita ai dati già presenti nel tuo account, in sola visualizzazione e senza dover rinnovare.",
+    detail: "Per aggiungere o modificare contenuti e utilizzare gli strumenti AI serve un abbonamento attivo. I dati restano consultabili finché scegli di conservarli nel tuo account.",
+  },
+  featuresTitle: "Scegli la durata, non le funzionalità",
+  featuresBody: "Mensile, trimestrale o annuale: ogni abbonamento include gli stessi strumenti di Ianua Mind. Cambiano solo la durata e il prezzo, così puoi scegliere la formula più adatta a te.",
+  monthlyReference: 49,
   plans: [
     {
       id: "mensile",
       name: "Mensile",
-      price: 99,
+      price: 49,
       billingCycle: "fatturato ogni mese",
-      monthlyEquivalent: 99,
-      cta: { label: "Inizia gratis", href: "#contatti" },
+      monthlyEquivalent: 49,
+      cta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/login" },
     },
     {
       id: "trimestrale",
       name: "Trimestrale",
-      price: 210,
+      price: 132,
       billingCycle: "fatturato ogni 3 mesi",
-      monthlyEquivalent: 70,
-      savingsEuro: 87,
-      savingsPercent: 29,
-      badge: "Risparmia il 29%",
-      cta: { label: "Inizia gratis", href: "#contatti" },
+      monthlyEquivalent: 44,
+      savingsEuro: 15,
+      badge: "5 € in meno al mese",
+      cta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/login" },
     },
     {
       id: "annuale",
       name: "Annuale",
-      price: 600,
+      price: 480,
       billingCycle: "fatturato ogni anno",
-      monthlyEquivalent: 50,
-      savingsEuro: 588,
-      savingsPercent: 50,
+      monthlyEquivalent: 40,
+      savingsEuro: 108,
       highlighted: true,
-      badge: "Miglior risparmio",
-      cta: { label: "Inizia gratis", href: "#contatti" },
+      badge: "9 € in meno al mese",
+      cta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/login" },
     },
   ] satisfies MindPricingPlan[],
 };
@@ -332,7 +337,13 @@ export const mindFaq = {
       id: "prova",
       question: "Come funziona la prova gratuita?",
       answer:
-        "Puoi provare gratuitamente tutte le funzionalità senza carta di credito. Al termine puoi scegliere un piano o interrompere senza costi.",
+        "Puoi provare gratuitamente tutte le funzionalità per 30 giorni, senza carta di credito. Al termine puoi scegliere il mensile a 49 €, il trimestrale a 132 € (44 €/mese) o l’annuale a 480 € (40 €/mese), oppure interrompere senza costi.",
+    },
+    {
+      id: "accesso-dopo-scadenza",
+      question: "Posso consultare i miei dati dopo la scadenza dell’abbonamento?",
+      answer:
+        "Sì. Mantieni l’accesso a vita ai dati già presenti nel tuo account, in sola visualizzazione, senza dover rinnovare l’abbonamento. Per aggiungere o modificare contenuti e utilizzare gli strumenti AI occorre un piano attivo. I dati restano consultabili finché scegli di conservarli nel tuo account.",
     },
     {
       id: "sicurezza",
@@ -389,7 +400,7 @@ export const mindFooter = {
         { label: "Funzionalità", href: "#funzionalita" },
         { label: "Percorso", href: "#percorso" },
         { label: "Novità", href: "#novita" },
-        { label: "Prova gratuita", href: "#contatti" },
+        { label: "Piani e prova gratuita", href: "#prezzi" },
       ],
     },
     {

@@ -133,7 +133,7 @@ export const mindTrust = {
     {
       id: "gdpr",
       title: "Conformità GDPR",
-      body: "Dati clinici crittografati. L'archivio principale è in Unione Europea; trascrizione, sintesi e ricerca nelle sedute usano fornitori negli Stati Uniti, con le garanzie previste dal GDPR. Su richiesta si possono esportare o cancellare.",
+      body: "Dati clinici crittografati. L'archivio principale è in Unione Europea; trascrizione, strumenti di intelligenza artificiale e ricerca nelle sedute usano fornitori negli Stati Uniti, con le garanzie previste dal GDPR. Su richiesta si possono esportare o cancellare.",
     },
     {
       id: "privato",
@@ -333,7 +333,7 @@ export const mindFaq = {
       id: "gdpr",
       question: "È conforme alla normativa GDPR?",
       answer:
-        "I dati clinici sono crittografati. L'archivio principale è in Unione Europea (AWS, Stoccolma); trascrizione, sintesi e ricerca nei testi delle sedute usano fornitori negli Stati Uniti, sulla base delle clausole contrattuali standard previste dal GDPR. I dettagli sono nell'informativa privacy. Su richiesta puoi esportare o cancellare i dati.",
+        "I dati clinici sono crittografati. L'archivio principale è in Unione Europea (AWS, Stoccolma); trascrizione, strumenti di intelligenza artificiale e ricerca nei testi delle sedute usano fornitori negli Stati Uniti, sulla base delle clausole contrattuali standard previste dal GDPR. I dettagli sono nell'informativa privacy. Su richiesta puoi esportare o cancellare i dati.",
     },
     {
       id: "prova",
@@ -357,7 +357,7 @@ export const mindFaq = {
       id: "supporto",
       question: "Che tipo di supporto offrite?",
       answer:
-        "Supporto via email per tutti i piani, con risposta prioritaria per Pro e Team. Disponibili anche sessioni di formazione per il tuo studio.",
+        "Supporto via email per tutti i piani. Disponibili anche sessioni di formazione per il tuo studio.",
     },
   ] satisfies MindFaqItem[],
 };

@@ -29,7 +29,7 @@
 
 .cols {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
@@ -57,10 +57,17 @@
   font-size: 16px;
 }
 
-.colLink:hover,
+.colLink:hover {
+  color: #fff;
+}
+
+/* Focus ben visibile da tastiera (WCAG 2.4.7 e 2.4.13). */
 .colLink:focus-visible {
   color: #fff;
-  outline: none;
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  border-radius: 2px;
+  text-decoration: underline;
 }
 
 .bottom {

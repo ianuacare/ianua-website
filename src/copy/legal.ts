@@ -44,8 +44,8 @@ export const privacyPolicy: LegalDocument = {
         "Dati dell'account (nome, email, credenziali di accesso) e dati di utilizzo del servizio: servono a creare l'account ed erogare il servizio. Base giuridica: esecuzione del contratto (art. 6.1.b GDPR).",
         "Dati di fatturazione, quando sottoscrivi un piano a pagamento: servono a emettere le fatture. Base giuridica: obbligo di legge (art. 6.1.c GDPR).",
         "Log tecnici (indirizzo IP, browser, orari di accesso): servono a proteggere il servizio da abusi e a dimostrare i consensi raccolti. Base giuridica: legittimo interesse (art. 6.1.f GDPR).",
-        "Codice della campagna da cui sei arrivato (parametri UTM del link, senza dati personali): serve a capire quali iniziative funzionano. Base giuridica: legittimo interesse (art. 6.1.f GDPR).",
-        `Email per novità e offerte: solo se lo scegli al momento della registrazione o in seguito. Base giuridica: consenso (art. 6.1.a GDPR e art. 130 Codice Privacy). Puoi revocarlo in ogni momento scrivendo a ${PRIVACY_EMAIL}.`,
+        "Parametri del link da cui sei arrivato (UTM): indicano la campagna e, se ti abbiamo scritto noi, il codice del nostro messaggio. Servono a capire quali iniziative funzionano e a collegare la tua registrazione al contatto che l'ha preceduta. Base giuridica: legittimo interesse (art. 6.1.f GDPR).",
+        `Email per novità e offerte: solo se lo scegli al momento della registrazione. Base giuridica: consenso (art. 6.1.a GDPR e art. 130 Codice Privacy). Puoi revocarlo in ogni momento scrivendo a ${PRIVACY_EMAIL}: registriamo la revoca e non ti scriviamo più.`,
       ],
     },
     {
@@ -61,7 +61,8 @@ export const privacyPolicy: LegalDocument = {
       title: "4. Dove sono i dati e chi li elabora",
       paragraphs: [
         "L'archivio principale (account, schede dei pazienti, registrazioni audio, trascrizioni) è su Amazon Web Services nella regione eu-north-1 (Stoccolma, Unione Europea), con crittografia dei dati archiviati. Su AWS passano anche l'autenticazione e le email del servizio.",
-        "Alcune elaborazioni avvengono presso fornitori con server negli Stati Uniti: OpenAI e Together AI per la trascrizione delle sedute e la generazione di sintesi e insight; Qdrant (Qdrant Solutions GmbH) per l'indice di ricerca nei testi delle sedute, che contiene parti delle trascrizioni ed è ospitato negli Stati Uniti.",
+        "Alcune elaborazioni avvengono presso fornitori con server negli Stati Uniti: OpenAI e Together AI ricevono i contenuti delle sedute e del caso per la trascrizione, le sintesi, gli insight, l'anamnesi, il genogramma e la second opinion; Qdrant (Qdrant Solutions GmbH) ospita negli Stati Uniti l'indice di ricerca nei testi delle sedute, che contiene parti delle trascrizioni.",
+        "Per la second opinion il servizio cerca nella letteratura scientifica su PubMed (National Library of Medicine, Stati Uniti): riceve le domande di ricerca, non le registrazioni né l'anagrafica dei pazienti.",
         "Questi trasferimenti fuori dall'Unione Europea si basano sulle clausole contrattuali standard approvate dalla Commissione europea (art. 46 GDPR), previste dai contratti con i fornitori.",
         `L'elenco aggiornato dei fornitori che trattano dati per conto di Ianua è disponibile su richiesta a ${PRIVACY_EMAIL}.`,
       ],
@@ -70,7 +71,7 @@ export const privacyPolicy: LegalDocument = {
       title: "5. Per quanto tempo",
       paragraphs: [
         "Dati dell'account: per tutta la durata dell'account e per 12 mesi dopo la chiusura, poi vengono cancellati.",
-        "Dati dei pazienti: finché il professionista li conserva nel servizio; alla chiusura dell'account sono cancellati entro 30 giorni, dopo averne permesso l'esportazione.",
+        `Dati dei pazienti: finché il professionista li conserva nel servizio. Quando elimina un paziente, la scheda viene disattivata subito; la cancellazione definitiva di registrazioni, trascrizioni e indice di ricerca avviene entro 30 giorni dalla richiesta a ${PRIVACY_EMAIL}. Alla chiusura dell'account i dati sono cancellati entro 30 giorni, dopo averne permesso l'esportazione.`,
         "Fatture: 10 anni, come richiesto dalla legge.",
         "Registro dei consensi: per tutta la durata del consenso e per i 10 anni successivi alla revoca, per poterlo dimostrare.",
       ],
@@ -81,6 +82,14 @@ export const privacyPolicy: LegalDocument = {
         `Puoi chiedere accesso, rettifica, cancellazione, limitazione, portabilità dei tuoi dati e opporti al trattamento basato sul legittimo interesse (artt. 15-22 GDPR), scrivendo a ${PRIVACY_EMAIL}.`,
         "Puoi presentare reclamo al Garante per la protezione dei dati personali (www.garanteprivacy.it).",
         "I pazienti esercitano i loro diritti verso il professionista; Ianua lo aiuta a rispondere.",
+      ],
+    },
+    {
+      title: "7. Se ti abbiamo contattato noi",
+      paragraphs: [
+        "Per proporre Ianua Mind a strutture e professionisti della salute mentale raccogliamo dati di contatto pubblicati da loro: nome della struttura o del professionista, indirizzo, telefono, email e sito, dal sito stesso, dalla scheda pubblica su Google Maps o da elenchi pubblici del settore. Non raccogliamo dati relativi alla salute.",
+        "Li usiamo per scriverti un messaggio personale, uno alla volta, e per sapere se il messaggio ha portato a una registrazione. Base giuridica: legittimo interesse (art. 6.1.f GDPR) a far conoscere il servizio a chi lavora nel settore.",
+        `Li conserviamo per 24 mesi dall'ultimo contatto. Puoi opporti in ogni momento rispondendo «no» al messaggio o scrivendo a ${PRIVACY_EMAIL}: cancelliamo i tuoi dati e teniamo solo l'indirizzo in una lista di esclusione, per non contattarti più. Hai gli stessi diritti indicati al punto 6.`,
       ],
     },
   ],
@@ -108,7 +117,8 @@ export const termsOfService: LegalDocument = {
       title: "3. Account e prova gratuita",
       paragraphs: [
         "Per usare il servizio serve un account personale. Sei responsabile della riservatezza delle credenziali e di ciò che avviene con il tuo account.",
-        "La prova gratuita dura 30 giorni e non richiede dati di pagamento. Alla fine della prova puoi scegliere un piano a pagamento. Se non lo fai, puoi chiedere l'esportazione dei tuoi dati entro 30 giorni; poi l'account e i dati vengono cancellati.",
+        "La prova gratuita dura 30 giorni e non richiede dati di pagamento. Alla fine della prova puoi scegliere un piano a pagamento.",
+        "Se non scegli un piano, o se l'abbonamento scade, i dati già presenti restano consultabili in sola lettura finché decidi di conservarli. Per aggiungere o modificare contenuti e usare gli strumenti di intelligenza artificiale serve un piano attivo.",
         "Piani e prezzi sono quelli indicati su www.ianuacare.it/ianua-mind al momento dell'acquisto.",
       ],
     },

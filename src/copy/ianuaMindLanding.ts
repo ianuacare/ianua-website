@@ -133,7 +133,7 @@ export const mindTrust = {
     {
       id: "gdpr",
       title: "Conformità GDPR",
-      body: "Dati clinici crittografati, archiviati in Unione Europea e gestiti secondo i requisiti per la salute. Si possono esportare o eliminare in qualsiasi momento.",
+      body: "Dati clinici crittografati. L'archivio principale è in Unione Europea; trascrizione, sintesi e ricerca nelle sedute usano fornitori negli Stati Uniti, con le garanzie previste dal GDPR. Su richiesta si possono esportare o cancellare.",
     },
     {
       id: "privato",
@@ -333,7 +333,7 @@ export const mindFaq = {
       id: "gdpr",
       question: "È conforme alla normativa GDPR?",
       answer:
-        "Sì. I dati clinici sono crittografati, archiviati in UE e gestiti secondo i requisiti GDPR per la salute. Puoi esportare o eliminare i dati in qualsiasi momento.",
+        "I dati clinici sono crittografati. L'archivio principale è in Unione Europea (AWS, Stoccolma); trascrizione, sintesi e ricerca nei testi delle sedute usano fornitori negli Stati Uniti, sulla base delle clausole contrattuali standard previste dal GDPR. I dettagli sono nell'informativa privacy. Su richiesta puoi esportare o cancellare i dati.",
     },
     {
       id: "prova",
@@ -419,6 +419,13 @@ export const mindFooter = {
         { label: "FAQ", href: "#faq" },
         { label: "Proponi una funzionalità", href: "#proponi-funzionalita" },
         { label: "Scrivici", href: "#contatti" },
+      ],
+    },
+    {
+      title: "Legale",
+      links: [
+        { label: "Informativa privacy", href: "/privacy" },
+        { label: "Termini di servizio", href: "/termini" },
       ],
     },
   ],

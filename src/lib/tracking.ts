@@ -30,6 +30,7 @@ export function captureUtm(search: string = window.location.search): void {
     if (value) found[key] = value.slice(0, MAX_LENGTH);
   }
   if (Object.keys(found).length === 0) return;
+  cached = found;
   try {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(found));
   } catch {
@@ -37,13 +38,28 @@ export function captureUtm(search: string = window.location.search): void {
   }
 }
 
+/** Solo stringhe note: un valore salvato male (null, numero, altro) non deve rompere la pagina. */
+function sanitize(value: unknown): Utm {
+  if (!value || typeof value !== "object") return {};
+  const out: Utm = {};
+  for (const key of UTM_KEYS) {
+    const v = (value as Record<string, unknown>)[key];
+    if (typeof v === "string" && v) out[key] = v.slice(0, MAX_LENGTH);
+  }
+  return out;
+}
+
+let cached: Utm | null = null;
+
 function storedUtm(): Utm {
+  if (cached) return cached;
   try {
     const raw = sessionStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as Utm) : {};
+    cached = raw ? sanitize(JSON.parse(raw)) : {};
   } catch {
-    return {};
+    cached = {};
   }
+  return cached;
 }
 
 /** Aggiunge gli UTM salvati ai link verso l'app; gli altri link restano come sono. */

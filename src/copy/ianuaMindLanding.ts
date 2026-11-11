@@ -18,6 +18,8 @@ export const ianuaMindHero = {
   },
   trustBadge: "Dati crittografati e conformità GDPR",
   primaryCta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/register" },
+  /** Per chi ha già un account: i bottoni «Prova gratis» portano alla registrazione. */
+  login: { label: "Accedi", href: "https://mind.ianuacare.it/login" },
 };
 
 export type MindScene =

@@ -48,6 +48,7 @@ export function IanuaMindHero() {
               {item.label}
             </a>
           ))}
+          <a href={ianuaMindHero.login.href}>{ianuaMindHero.login.label}</a>
         </nav>
         <a className={styles.navCta} href={trackedHref(ianuaMindHero.primaryCta.href)}>
           Prova gratis

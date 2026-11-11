@@ -6,6 +6,9 @@ import { MotionConfig } from "motion/react";
 import { Analytics } from "@vercel/analytics/react";
 import "./index.css";
 import { router } from "./router";
+import { captureUtm } from "./lib/tracking";
+
+captureUtm();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

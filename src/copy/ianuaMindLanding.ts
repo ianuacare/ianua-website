@@ -17,7 +17,9 @@ export const ianuaMindHero = {
     text: "Pensato per semplificare il lavoro clinico quotidiano, senza compromettere la qualità della cura.",
   },
   trustBadge: "Dati crittografati e conformità GDPR",
-  primaryCta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/login" },
+  primaryCta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/register" },
+  /** Per chi ha già un account: i bottoni «Prova gratis» portano alla registrazione. */
+  login: { label: "Accedi", href: "https://mind.ianuacare.it/login" },
 };
 
 export type MindScene =
@@ -290,7 +292,7 @@ export const mindPricing = {
       price: 49,
       billingCycle: "fatturato ogni mese",
       monthlyEquivalent: 49,
-      cta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/login" },
+      cta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/register" },
     },
     {
       id: "trimestrale",
@@ -300,7 +302,7 @@ export const mindPricing = {
       monthlyEquivalent: 44,
       savingsEuro: 15,
       badge: "5 € in meno al mese",
-      cta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/login" },
+      cta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/register" },
     },
     {
       id: "annuale",
@@ -311,7 +313,7 @@ export const mindPricing = {
       savingsEuro: 108,
       highlighted: true,
       badge: "9 € in meno al mese",
-      cta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/login" },
+      cta: { label: "Prova gratis per 30 giorni", href: "https://mind.ianuacare.it/register" },
     },
   ] satisfies MindPricingPlan[],
 };

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import psychologist from "../../assets/images/mind-psychologist.jpg";
 import { IanuaMindWordmark } from "../IanuaMindWordmark";
 import { ianuaMindHero, ianuaMindNavItems } from "../../copy/ianuaMindLanding";
+import { trackedHref } from "../../lib/tracking";
 import styles from "./IanuaMindHero.module.css";
 
 /**
@@ -48,7 +49,7 @@ export function IanuaMindHero() {
             </a>
           ))}
         </nav>
-        <a className={styles.navCta} href={ianuaMindHero.primaryCta.href}>
+        <a className={styles.navCta} href={trackedHref(ianuaMindHero.primaryCta.href)}>
           Prova gratis
         </a>
         <button
@@ -69,7 +70,7 @@ export function IanuaMindHero() {
             {ianuaMindHero.title}
           </h1>
           <p className={styles.subtitle}>{ianuaMindHero.subtitle}</p>
-          <a className={styles.cta} href={ianuaMindHero.primaryCta.href}>
+          <a className={styles.cta} href={trackedHref(ianuaMindHero.primaryCta.href)}>
             {ianuaMindHero.primaryCta.label}
           </a>
           <p className={styles.trust}>{ianuaMindHero.trustBadge}</p>

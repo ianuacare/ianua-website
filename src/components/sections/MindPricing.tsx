@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { mindPricing } from "../../copy/ianuaMindLanding";
 import { easeOut } from "./_motion";
+import { trackedHref } from "../../lib/tracking";
 import styles from "./MindPricing.module.css";
 
 function formatEuro(value: number): string {
@@ -76,7 +77,7 @@ export function MindPricing() {
               )}
 
               <a
-                href={plan.cta.href}
+                href={trackedHref(plan.cta.href)}
                 className={plan.highlighted ? styles.ctaPrimary : styles.ctaSecondary}
               >
                 {plan.cta.label}

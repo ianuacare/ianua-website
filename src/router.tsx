@@ -4,6 +4,7 @@ import GenerateArticle from "./pages/GenerateArticle";
 import Home from "./pages/Home";
 import IanuaMindLanding from "./pages/IanuaMindLanding";
 import Legal from "./pages/Legal";
+import Lab from "./pages/Lab";
 import { privacyPolicy, termsOfService } from "./copy/legal";
 
 function RootLayout() {
@@ -17,6 +18,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "ianua-mind", element: <IanuaMindLanding /> },
+      { path: "lab", element: <Lab /> },
       { path: "privacy", element: <Legal doc={privacyPolicy} /> },
       { path: "termini", element: <Legal doc={termsOfService} /> },
       { path: "generate-article", element: <GenerateArticle /> },

@@ -7,6 +7,7 @@ import {
   useTransform,
 } from "motion/react";
 import { IanuaLogo } from "../components/IanuaLogo";
+import { HomeHeader } from "../components/home/HomeHeader";
 import { HomeContact } from "../components/home/HomeContact";
 import { products, audiences } from "../copy/home";
 import { PageMeta } from "../components/seo/PageMeta";
@@ -57,67 +58,6 @@ function Reveal({
     >
       {children}
     </motion.div>
-  );
-}
-
-function Header() {
-  const [open, setOpen] = useState(false);
-  const toggle = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && open) {
-        setOpen(false);
-        toggle.current?.focus();
-      }
-    };
-    const media = matchMedia("(min-width: 801px)");
-    const resize = () => {
-      if (media.matches) setOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    media.addEventListener("change", resize);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      media.removeEventListener("change", resize);
-    };
-  }, [open]);
-  return (
-    <header className={s.header}>
-      <a href="#top" aria-label="IANUA — torna all’inizio">
-        <IanuaLogo interactive={false} className={s.navLogo} />
-      </a>
-      <button
-        className={s.menuToggle}
-        ref={toggle}
-        aria-expanded={open}
-        aria-controls="home-nav"
-        onClick={() => setOpen(!open)}
-      >
-        {open ? "Chiudi −" : "Menu +"}
-      </button>
-      <nav
-        id="home-nav"
-        className={`${s.nav} ${open ? s.navOpen : ""}`}
-        aria-label="Navigazione principale"
-      >
-        <a href="#visione" onClick={() => setOpen(false)}>
-          Perché IANUA
-        </a>
-        <a href="#ecosistema" onClick={() => setOpen(false)}>
-          I nostri prodotti
-        </a>
-        <a href="#approccio" onClick={() => setOpen(false)}>
-          Come lavoriamo
-        </a>
-        <a
-          className={s.navContact}
-          href="#contatti"
-          onClick={() => setOpen(false)}
-        >
-          Parliamone <span aria-hidden="true">↗</span>
-        </a>
-      </nav>
-    </header>
   );
 }
 
@@ -308,7 +248,7 @@ export default function Home() {
       <a href="#main-content" className={s.skipLink}>
         Vai al contenuto
       </a>
-      <Header />
+      <HomeHeader />
       <main id="main-content" tabIndex={-1}>
         <Hero
           still={still}
@@ -490,6 +430,7 @@ export default function Home() {
           <nav aria-label="Mappa del sito">
             <a href="#ecosistema">I nostri prodotti</a>
             <a href="#ianuacare">Ianuacare</a>
+            <Link to="/lab">Lab</Link>
             <a href="#contatti">Contatti</a>
             <a href="#top">Torna su ↑</a>
           </nav>

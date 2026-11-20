@@ -26,6 +26,11 @@ Sitemap: ${siteOrigin}/sitemap.xml
     <priority>1</priority>
   </url>
   <url>
+    <loc>${siteOrigin}/lab</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>${siteOrigin}/coming-soon</loc>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>

@@ -43,8 +43,8 @@ export const labProjects = [
       "Trasformare lettere di dimissione e documenti scansionati in informazioni strutturate può alleggerire il lavoro di trascrizione e preparazione dei dati per la ricerca. Il progetto integra OCR con Marker e riconoscimento di entità cliniche, lavorando su 291 documenti e un insieme di 74 campi che comprende diagnosi, anamnesi, terapie ed esiti.",
       "Lo studio confronta l’estrazione diretta tramite modelli linguistici con una pipeline Bio_ClinicalBERT, adattata su annotazioni generate da un LLM, seguita dalla classificazione delle entità. Per ospedali e gruppi di ricerca, esplora come rendere interrogabile il patrimonio documentale. I test evidenziano anche errori di estrazione: verifica specialistica e valutazioni più ampie restano essenziali.",
     ],
-    pdf: null,
-    resource: null,
+    pdf: "estrazione-entita-cliniche.pdf",
+    resource: "Leggi il report",
   },
   {
     id: "anomalie-ipotiroidismo",

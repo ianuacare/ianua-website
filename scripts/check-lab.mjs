@@ -15,7 +15,7 @@ try {
   await page.waitForURL('**/lab');
   await page.getByRole('heading', { level: 1, name: 'Lab', exact: true }).waitFor();
   assert.equal(await page.locator('article').count(), 6);
-  assert.equal(await page.locator('a[href$=".pdf"]').count(), 5);
+  assert.equal(await page.locator('a[href$=".pdf"]').count(), 6);
   assert.equal(await page.locator('a[href*="github"]').count(), 0);
   assert.match(await page.title(), /Lab/);
   const pdfs = await page.locator('a[href$=".pdf"]').evaluateAll(links => links.map(link => link.href));
@@ -57,7 +57,7 @@ try {
   await page.getByRole('heading', { level: 1, name: 'Lab', exact: true }).waitFor();
   assert.equal(await page.locator('button[aria-controls="home-nav"]').getAttribute('aria-expanded'), 'false');
   assert.deepEqual(errors, []);
-  console.log('PASS: navigation, 6 cards, 5 PDF responses, no GitHub links, metadata, responsive widths, Escape/focus, home section links, reload, no runtime errors.');
+  console.log('PASS: navigation, 6 cards, 6 PDF responses, no GitHub links, metadata, responsive widths, Escape/focus, home section links, reload, no runtime errors.');
   console.log(`Screenshots: ${join(tmpdir(), 'ianua-lab-desktop.png')} and ${join(tmpdir(), 'ianua-lab-mobile.png')}`);
 } finally {
   await browser.close();
